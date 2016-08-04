@@ -1,0 +1,12 @@
+PODS:
+  - StromFacilitate (0.1.0)
+
+DEPENDENCIES:
+  - StromFacilitate
+
+SPEC CHECKSUMS:
+  StromFacilitate: 9801b2a3cf532bda1a98a6b5da1eb390b425ffbc
+
+PODFILE CHECKSUM: 36e664b292f569d9e489d1cb14bf534a49842912
+
+COCOAPODS: 1.0.1

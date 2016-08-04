@@ -1,0 +1,435 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B88119751D53163500238644 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B88119741D53163500238644 /* main.m */; };
+		B88119781D53163500238644 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B88119771D53163500238644 /* AppDelegate.m */; };
+		B881197B1D53163500238644 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B881197A1D53163500238644 /* ViewController.m */; };
+		B881197E1D53163500238644 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B881197C1D53163500238644 /* Main.storyboard */; };
+		B88119801D53163500238644 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B881197F1D53163500238644 /* Assets.xcassets */; };
+		B88119831D53163500238644 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B88119811D53163500238644 /* LaunchScreen.storyboard */; };
+		B88119971D53171000238644 /* STMBaseTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B881198D1D53171000238644 /* STMBaseTransitionAnimator.m */; };
+		B88119981D53171000238644 /* STMResignLeftTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B881198F1D53171000238644 /* STMResignLeftTransitionAnimator.m */; };
+		B88119991D53171000238644 /* STMTransitionSnapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = B88119911D53171000238644 /* STMTransitionSnapshot.m */; };
+		B881199A1D53171000238644 /* UINavigationController+STMTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = B88119941D53171000238644 /* UINavigationController+STMTransition.m */; };
+		B881199B1D53171000238644 /* UIViewController+STMTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = B88119961D53171000238644 /* UIViewController+STMTransition.m */; };
+		B9353B161E87F71070CA79BC /* libPods-NavigatinTransition.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 403FDC675506633C7FBDD00A /* libPods-NavigatinTransition.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		11D72E05F3D794A750FF81BA /* Pods-NavigatinTransition.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavigatinTransition.release.xcconfig"; path = "Pods/Target Support Files/Pods-NavigatinTransition/Pods-NavigatinTransition.release.xcconfig"; sourceTree = "<group>"; };
+		2CA02E990E08950F1D4280BA /* Pods-NavigatinTransition.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavigatinTransition.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NavigatinTransition/Pods-NavigatinTransition.debug.xcconfig"; sourceTree = "<group>"; };
+		403FDC675506633C7FBDD00A /* libPods-NavigatinTransition.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NavigatinTransition.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B88119701D53163500238644 /* NavigatinTransition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NavigatinTransition.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B88119741D53163500238644 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B88119761D53163500238644 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B88119771D53163500238644 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B88119791D53163500238644 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		B881197A1D53163500238644 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B881197D1D53163500238644 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B881197F1D53163500238644 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B88119821D53163500238644 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B88119841D53163500238644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B881198C1D53171000238644 /* STMBaseTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMBaseTransitionAnimator.h; sourceTree = "<group>"; };
+		B881198D1D53171000238644 /* STMBaseTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMBaseTransitionAnimator.m; sourceTree = "<group>"; };
+		B881198E1D53171000238644 /* STMResignLeftTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMResignLeftTransitionAnimator.h; sourceTree = "<group>"; };
+		B881198F1D53171000238644 /* STMResignLeftTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMResignLeftTransitionAnimator.m; sourceTree = "<group>"; };
+		B88119901D53171000238644 /* STMTransitionSnapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMTransitionSnapshot.h; sourceTree = "<group>"; };
+		B88119911D53171000238644 /* STMTransitionSnapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMTransitionSnapshot.m; sourceTree = "<group>"; };
+		B88119921D53171000238644 /* STMNavigationTransitionStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMNavigationTransitionStyle.h; sourceTree = "<group>"; };
+		B88119931D53171000238644 /* UINavigationController+STMTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+STMTransition.h"; sourceTree = "<group>"; };
+		B88119941D53171000238644 /* UINavigationController+STMTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+STMTransition.m"; sourceTree = "<group>"; };
+		B88119951D53171000238644 /* UIViewController+STMTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+STMTransition.h"; sourceTree = "<group>"; };
+		B88119961D53171000238644 /* UIViewController+STMTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+STMTransition.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B881196D1D53163500238644 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9353B161E87F71070CA79BC /* libPods-NavigatinTransition.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		786B8D0058E9F136D6F2A8C2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				403FDC675506633C7FBDD00A /* libPods-NavigatinTransition.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B88119671D53163500238644 = {
+			isa = PBXGroup;
+			children = (
+				B88119721D53163500238644 /* NavigatinTransition */,
+				B88119711D53163500238644 /* Products */,
+				F549BC878177F72D83B3A542 /* Pods */,
+				786B8D0058E9F136D6F2A8C2 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B88119711D53163500238644 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B88119701D53163500238644 /* NavigatinTransition.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B88119721D53163500238644 /* NavigatinTransition */ = {
+			isa = PBXGroup;
+			children = (
+				B881198A1D53171000238644 /* Transition */,
+				B88119761D53163500238644 /* AppDelegate.h */,
+				B88119771D53163500238644 /* AppDelegate.m */,
+				B88119791D53163500238644 /* ViewController.h */,
+				B881197A1D53163500238644 /* ViewController.m */,
+				B881197C1D53163500238644 /* Main.storyboard */,
+				B881197F1D53163500238644 /* Assets.xcassets */,
+				B88119811D53163500238644 /* LaunchScreen.storyboard */,
+				B88119841D53163500238644 /* Info.plist */,
+				B88119731D53163500238644 /* Supporting Files */,
+			);
+			path = NavigatinTransition;
+			sourceTree = "<group>";
+		};
+		B88119731D53163500238644 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B88119741D53163500238644 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B881198A1D53171000238644 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				B881198B1D53171000238644 /* AnimatedTransition */,
+				B88119921D53171000238644 /* STMNavigationTransitionStyle.h */,
+				B88119931D53171000238644 /* UINavigationController+STMTransition.h */,
+				B88119941D53171000238644 /* UINavigationController+STMTransition.m */,
+				B88119951D53171000238644 /* UIViewController+STMTransition.h */,
+				B88119961D53171000238644 /* UIViewController+STMTransition.m */,
+			);
+			path = Transition;
+			sourceTree = "<group>";
+		};
+		B881198B1D53171000238644 /* AnimatedTransition */ = {
+			isa = PBXGroup;
+			children = (
+				B881198C1D53171000238644 /* STMBaseTransitionAnimator.h */,
+				B881198D1D53171000238644 /* STMBaseTransitionAnimator.m */,
+				B881198E1D53171000238644 /* STMResignLeftTransitionAnimator.h */,
+				B881198F1D53171000238644 /* STMResignLeftTransitionAnimator.m */,
+				B88119901D53171000238644 /* STMTransitionSnapshot.h */,
+				B88119911D53171000238644 /* STMTransitionSnapshot.m */,
+			);
+			path = AnimatedTransition;
+			sourceTree = "<group>";
+		};
+		F549BC878177F72D83B3A542 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2CA02E990E08950F1D4280BA /* Pods-NavigatinTransition.debug.xcconfig */,
+				11D72E05F3D794A750FF81BA /* Pods-NavigatinTransition.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B881196F1D53163500238644 /* NavigatinTransition */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B88119871D53163500238644 /* Build configuration list for PBXNativeTarget "NavigatinTransition" */;
+			buildPhases = (
+				4DB28E25BB69778B53F745FE /* [CP] Check Pods Manifest.lock */,
+				B881196C1D53163500238644 /* Sources */,
+				B881196D1D53163500238644 /* Frameworks */,
+				B881196E1D53163500238644 /* Resources */,
+				8B389578F800E15A4C610283 /* [CP] Embed Pods Frameworks */,
+				8FBA84EA157B23C451FB386A /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NavigatinTransition;
+			productName = NavigatinTransition;
+			productReference = B88119701D53163500238644 /* NavigatinTransition.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B88119681D53163500238644 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = secoo;
+				TargetAttributes = {
+					B881196F1D53163500238644 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = B881196B1D53163500238644 /* Build configuration list for PBXProject "NavigatinTransition" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B88119671D53163500238644;
+			productRefGroup = B88119711D53163500238644 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B881196F1D53163500238644 /* NavigatinTransition */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B881196E1D53163500238644 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B88119831D53163500238644 /* LaunchScreen.storyboard in Resources */,
+				B88119801D53163500238644 /* Assets.xcassets in Resources */,
+				B881197E1D53163500238644 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4DB28E25BB69778B53F745FE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8B389578F800E15A4C610283 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NavigatinTransition/Pods-NavigatinTransition-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8FBA84EA157B23C451FB386A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NavigatinTransition/Pods-NavigatinTransition-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B881196C1D53163500238644 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B881197B1D53163500238644 /* ViewController.m in Sources */,
+				B88119781D53163500238644 /* AppDelegate.m in Sources */,
+				B88119981D53171000238644 /* STMResignLeftTransitionAnimator.m in Sources */,
+				B881199A1D53171000238644 /* UINavigationController+STMTransition.m in Sources */,
+				B881199B1D53171000238644 /* UIViewController+STMTransition.m in Sources */,
+				B88119991D53171000238644 /* STMTransitionSnapshot.m in Sources */,
+				B88119751D53163500238644 /* main.m in Sources */,
+				B88119971D53171000238644 /* STMBaseTransitionAnimator.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B881197C1D53163500238644 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B881197D1D53163500238644 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B88119811D53163500238644 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B88119821D53163500238644 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B88119851D53163500238644 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B88119861D53163500238644 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B88119881D53163500238644 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2CA02E990E08950F1D4280BA /* Pods-NavigatinTransition.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = NavigatinTransition/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.secoo.www.NavigatinTransition;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B88119891D53163500238644 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11D72E05F3D794A750FF81BA /* Pods-NavigatinTransition.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = NavigatinTransition/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.secoo.www.NavigatinTransition;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B881196B1D53163500238644 /* Build configuration list for PBXProject "NavigatinTransition" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B88119851D53163500238644 /* Debug */,
+				B88119861D53163500238644 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B88119871D53163500238644 /* Build configuration list for PBXNativeTarget "NavigatinTransition" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B88119881D53163500238644 /* Debug */,
+				B88119891D53163500238644 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B88119681D53163500238644 /* Project object */;
+}
