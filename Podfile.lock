@@ -1,11 +1,11 @@
 PODS:
-  - StromFacilitate (0.1.1)
+  - StromFacilitate (0.1.2)
 
 DEPENDENCIES:
   - StromFacilitate
 
 SPEC CHECKSUMS:
-  StromFacilitate: 92b9b21afa13fba558fa1dae052d201353aaf9e4
+  StromFacilitate: f496d30a2c4f025851c4b3b1c7590151b189cb71
 
 PODFILE CHECKSUM: 36e664b292f569d9e489d1cb14bf534a49842912
 
