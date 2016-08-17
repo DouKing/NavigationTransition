@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "UIColor+STM.h"
 
 @interface ViewController ()
 
@@ -17,11 +18,19 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   // Do any additional setup after loading the view, typically from a nib.
+  self.view.backgroundColor = [UIColor stm_randomColor];
+  
+  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRedo target:self action:@selector(_pushAction)];
 }
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
+}
+
+- (void)_pushAction {
+  ViewController *vc = [[ViewController alloc] init];
+  [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end
