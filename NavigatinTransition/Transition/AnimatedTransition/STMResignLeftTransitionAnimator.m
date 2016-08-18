@@ -28,27 +28,27 @@ static NSInteger const kSTMSnapshotViewTag = 19999;
   UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
   UIView *containerView = [transitionContext containerView];
   UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
-  UIView *destinationView = [[keyWindow subviews] firstObject];
+  
   if (UINavigationControllerOperationPush == self.operation) {
-    UIView *snapShotView = [[UIApplication sharedApplication].keyWindow snapshotViewAfterScreenUpdates:NO];
-    [containerView addSubview:toViewController.view];
-    
-    UIView *maskView = [[UIView alloc] initWithFrame:keyWindow.bounds];
+    UIView *maskView = [[UIView alloc] initWithFrame:containerView.bounds];
     maskView.backgroundColor = [UIColor blackColor];
-    [keyWindow addSubview:maskView];
+    [containerView addSubview:maskView];
     
+    UIView *snapShotView = [keyWindow snapshotViewAfterScreenUpdates:NO];
     snapShotView.frame = maskView.bounds;
     snapShotView.tag = kSTMSnapshotViewTag;
     [maskView addSubview:snapShotView];
     
-    [keyWindow bringSubviewToFront:destinationView];
-    destinationView.transform = CGAffineTransformMakeTranslation(keyWindow.bounds.size.width, 0);
+    [containerView addSubview:toViewController.view];
+    toViewController.view.transform = CGAffineTransformMakeTranslation(containerView.bounds.size.width, 0);
+    toViewController.navigationController.navigationBar.transform = CGAffineTransformMakeTranslation(containerView.bounds.size.width, 0);
     
     if (toViewController.hidesBottomBarWhenPushed) {
       fromViewController.tabBarController.tabBar.alpha = 0;
     }
     [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
-      destinationView.transform = CGAffineTransformIdentity;
+      toViewController.view.transform = CGAffineTransformIdentity;
+      toViewController.navigationController.navigationBar.transform = CGAffineTransformIdentity;
       snapShotView.transform = CGAffineTransformMakeScale(0.95, 0.95);
     } completion:^(BOOL finished) {
       STMTransitionSnapshot *snapshot = [[STMTransitionSnapshot alloc] init];
@@ -71,27 +71,23 @@ static NSInteger const kSTMSnapshotViewTag = 19999;
         break;
       }
     }
-    
     if (cachedView) {
-      [keyWindow addSubview:cachedView];
-      UIView *snapshotView = [[UIApplication sharedApplication].keyWindow snapshotViewAfterScreenUpdates:NO];
-      snapshotView.frame = keyWindow.bounds;
-      [keyWindow addSubview:snapshotView];
-      
+      [containerView addSubview:cachedView];
+      [containerView addSubview:fromViewController.view];
       [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
-        snapshotView.transform = CGAffineTransformMakeTranslation(keyWindow.bounds.size.width, 0);
+        fromViewController.view.transform = CGAffineTransformMakeTranslation(containerView.bounds.size.width, 0);
+        fromViewController.navigationController.navigationBar.transform = CGAffineTransformMakeTranslation(containerView.bounds.size.width, 0);
         [cachedView viewWithTag:kSTMSnapshotViewTag].transform = CGAffineTransformIdentity;
       } completion:^(BOOL finished) {
+        toViewController.navigationController.navigationBar.transform = CGAffineTransformIdentity;
         [cachedView removeFromSuperview];
         [self.cachedSnapShotViews removeObject:cachedSnapshot];
-        [snapshotView removeFromSuperview];
         [containerView addSubview:toViewController.view];
         [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
       }];
     } else {
       [super animateTransition:transitionContext];
     }
-    
   } else {
     [super animateTransition:transitionContext];
   }
