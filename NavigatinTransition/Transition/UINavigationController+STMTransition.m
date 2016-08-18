@@ -10,40 +10,18 @@
 #import "STMObjectRuntime.h"
 #import "UIViewController+STMTransition.h"
 #import "STMResignLeftTransitionAnimator.h"
+#import "STMInteractionController.h"
 
-@interface STMTransitionProxy : NSProxy<UINavigationControllerDelegate>
+@interface STMTransitionProxy : NSObject<UINavigationControllerDelegate>
 
 @property (nonatomic, assign) STMNavigationTransitionStyle transitionStyle;
-@property (nonatomic, weak) id<UINavigationControllerDelegate> delegate;
 @property (nonatomic, strong) STMBaseTransitionAnimator *baseTransitionAnimator;
 @property (nonatomic, strong) STMResignLeftTransitionAnimator *resignLeftTransitionAnimator;
+@property (nonatomic, strong) STMInteractionController *interactionController;
 
 @end
 
 @implementation STMTransitionProxy
-
-- (instancetype)init {
-  _transitionStyle = STMNavigationTransitionStyleSystem;
-  _delegate = nil;
-  return self;
-}
-
-- (void)forwardInvocation:(NSInvocation *)invocation {
-  [invocation setTarget:self.delegate];
-  [invocation invoke];
-  return;
-}
-
-- (NSMethodSignature *)methodSignatureForSelector:(SEL)sel {
-  return [(id)self.delegate methodSignatureForSelector:sel];
-}
-
-- (BOOL)respondsToSelector:(SEL)aSelector {
-  if (sel_isEqual(aSelector, @selector(navigationController:animationControllerForOperation:fromViewController:toViewController:)) || sel_isEqual(aSelector, @selector(navigationController:interactionControllerForAnimationController:))) {
-    return YES;
-  }
-  return [self.delegate respondsToSelector:aSelector];
-}
 
 - (STMBaseTransitionAnimator *)_animatorForTransitionStyle:(STMNavigationTransitionStyle)transitionStyle {
   switch (transitionStyle) {
@@ -64,8 +42,12 @@
 
 #pragma mark - UINavigationControllerDelegate
 
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+  [self.interactionController wireToViewController:viewController];
+}
+
 - (id<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController interactionControllerForAnimationController:(id<UIViewControllerAnimatedTransitioning>)animationController {
-  return nil;
+  return self.interactionController.interacting ? self.interactionController : nil;
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
@@ -79,6 +61,13 @@
 }
 
 #pragma mark - setter & getter
+
+- (STMInteractionController *)interactionController {
+  if (!_interactionController) {
+    _interactionController = [[STMInteractionController alloc] init];
+  }
+  return _interactionController;
+}
 
 - (STMResignLeftTransitionAnimator *)resignLeftTransitionAnimator {
   if (!_resignLeftTransitionAnimator) {
@@ -111,8 +100,8 @@
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
     Class class = [self class];
-    NSArray *originalSelectors = @[@"viewDidLoad", @"setDelegate:", @"delegate"];
-    NSArray *swizzledSelectors = @[@"stm_viewDidLoad", @"stm_setDelegate:", @"stm_delegate"];
+    NSArray *originalSelectors = @[@"viewDidLoad"];
+    NSArray *swizzledSelectors = @[@"stm_viewDidLoad"];
     for (NSInteger i = 0; i < [originalSelectors count]; ++i) {
       SEL originalSel = NSSelectorFromString(originalSelectors[i]);
       SEL swizzledSel = NSSelectorFromString(swizzledSelectors[i]);
@@ -122,17 +111,8 @@
 }
 
 - (void)stm_viewDidLoad {
-  self.delegate = self.delegate;
+  self.delegate = self.proxy;
   [self stm_viewDidLoad];
-}
-
-- (void)stm_setDelegate:(id<UINavigationControllerDelegate>)delegate {
-  self.proxy.delegate = delegate;
-  [self stm_setDelegate:self.proxy];
-}
-
-- (id<UINavigationControllerDelegate>)stm_delegate {
-  return self.proxy.delegate;
 }
 
 - (STMTransitionProxy *)proxy {

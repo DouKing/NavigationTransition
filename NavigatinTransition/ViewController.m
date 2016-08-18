@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "UIColor+STM.h"
+#import "UIViewController+STMTransition.h"
 
 @interface ViewController ()
 
@@ -30,6 +31,7 @@
 
 - (void)_pushAction {
   ViewController *vc = [[ViewController alloc] init];
+  vc.navigationTransitionStyle = STMNavigationTransitionStyleNone;
   [self.navigationController pushViewController:vc animated:YES];
 }
 

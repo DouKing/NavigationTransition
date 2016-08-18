@@ -16,8 +16,8 @@
 		B88119971D53171000238644 /* STMBaseTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B881198D1D53171000238644 /* STMBaseTransitionAnimator.m */; };
 		B88119981D53171000238644 /* STMResignLeftTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B881198F1D53171000238644 /* STMResignLeftTransitionAnimator.m */; };
 		B88119991D53171000238644 /* STMTransitionSnapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = B88119911D53171000238644 /* STMTransitionSnapshot.m */; };
-		B881199A1D53171000238644 /* UINavigationController+STMTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = B88119941D53171000238644 /* UINavigationController+STMTransition.m */; };
 		B881199B1D53171000238644 /* UIViewController+STMTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = B88119961D53171000238644 /* UIViewController+STMTransition.m */; };
+		B8CA35E21D656ADB00CDE01C /* STMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CA35E11D656ADB00CDE01C /* STMNavigationController.m */; };
 		B9353B161E87F71070CA79BC /* libPods-NavigatinTransition.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 403FDC675506633C7FBDD00A /* libPods-NavigatinTransition.a */; };
 /* End PBXBuildFile section */
 
@@ -42,10 +42,10 @@
 		B88119901D53171000238644 /* STMTransitionSnapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMTransitionSnapshot.h; sourceTree = "<group>"; };
 		B88119911D53171000238644 /* STMTransitionSnapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMTransitionSnapshot.m; sourceTree = "<group>"; };
 		B88119921D53171000238644 /* STMNavigationTransitionStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMNavigationTransitionStyle.h; sourceTree = "<group>"; };
-		B88119931D53171000238644 /* UINavigationController+STMTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+STMTransition.h"; sourceTree = "<group>"; };
-		B88119941D53171000238644 /* UINavigationController+STMTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+STMTransition.m"; sourceTree = "<group>"; };
 		B88119951D53171000238644 /* UIViewController+STMTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+STMTransition.h"; sourceTree = "<group>"; };
 		B88119961D53171000238644 /* UIViewController+STMTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+STMTransition.m"; sourceTree = "<group>"; };
+		B8CA35E01D656ADB00CDE01C /* STMNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMNavigationController.h; sourceTree = "<group>"; };
+		B8CA35E11D656ADB00CDE01C /* STMNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,12 +114,13 @@
 		B881198A1D53171000238644 /* Transition */ = {
 			isa = PBXGroup;
 			children = (
+				B8CA35E31D656EBA00CDE01C /* InteractionController */,
 				B881198B1D53171000238644 /* AnimatedTransition */,
 				B88119921D53171000238644 /* STMNavigationTransitionStyle.h */,
-				B88119931D53171000238644 /* UINavigationController+STMTransition.h */,
-				B88119941D53171000238644 /* UINavigationController+STMTransition.m */,
 				B88119951D53171000238644 /* UIViewController+STMTransition.h */,
 				B88119961D53171000238644 /* UIViewController+STMTransition.m */,
+				B8CA35E01D656ADB00CDE01C /* STMNavigationController.h */,
+				B8CA35E11D656ADB00CDE01C /* STMNavigationController.m */,
 			);
 			path = Transition;
 			sourceTree = "<group>";
@@ -135,6 +136,13 @@
 				B88119911D53171000238644 /* STMTransitionSnapshot.m */,
 			);
 			path = AnimatedTransition;
+			sourceTree = "<group>";
+		};
+		B8CA35E31D656EBA00CDE01C /* InteractionController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = InteractionController;
 			sourceTree = "<group>";
 		};
 		F549BC878177F72D83B3A542 /* Pods */ = {
@@ -270,10 +278,10 @@
 				B881197B1D53163500238644 /* ViewController.m in Sources */,
 				B88119781D53163500238644 /* AppDelegate.m in Sources */,
 				B88119981D53171000238644 /* STMResignLeftTransitionAnimator.m in Sources */,
-				B881199A1D53171000238644 /* UINavigationController+STMTransition.m in Sources */,
 				B881199B1D53171000238644 /* UIViewController+STMTransition.m in Sources */,
 				B88119991D53171000238644 /* STMTransitionSnapshot.m in Sources */,
 				B88119751D53163500238644 /* main.m in Sources */,
+				B8CA35E21D656ADB00CDE01C /* STMNavigationController.m in Sources */,
 				B88119971D53171000238644 /* STMBaseTransitionAnimator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "UINavigationController+STMTransition.h"
+#import "STMNavigationController.h"
 
 @interface AppDelegate ()
 
@@ -18,8 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   // Override point for customization after application launch.
-  UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
-  nav.transitionStyle = STMNavigationTransitionStyleResignLeft;
+  STMNavigationController *nav = (STMNavigationController *)self.window.rootViewController;
+  nav.navigationTransitionStyle = STMNavigationTransitionStyleResignLeft;
   return YES;
 }
 
