@@ -92,6 +92,9 @@
 
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
   STMNavigationTransitionStyle transitionStyle = (UINavigationControllerOperationPush == operation) ? toVC.navigationTransitionStyle : fromVC.navigationTransitionStyle;
+  if (STMNavigationTransitionStyleNone == transitionStyle) {
+    transitionStyle = self.navigationTransitionStyle;
+  }
   STMBaseTransitionAnimator *animator = [self _animatorForTransitionStyle:transitionStyle];
   animator.operation = operation;
   return animator;
