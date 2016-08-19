@@ -18,7 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   // Override point for customization after application launch.
-  STMNavigationController *nav = (STMNavigationController *)self.window.rootViewController;
+  UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+  STMNavigationController *nav = (STMNavigationController *)([tabBarController viewControllers].firstObject);
   nav.navigationTransitionStyle = STMNavigationTransitionStyleResignLeft;
   return YES;
 }
