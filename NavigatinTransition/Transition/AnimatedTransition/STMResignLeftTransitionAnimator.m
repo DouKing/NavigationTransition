@@ -45,10 +45,15 @@ static NSInteger const kSTMSnapshotViewTag = 19999;
     
     if (toViewController.hidesBottomBarWhenPushed) {
       fromViewController.tabBarController.tabBar.alpha = 0;
+    } else {
+      fromViewController.tabBarController.tabBar.transform = CGAffineTransformMakeTranslation(containerView.bounds.size.width, 0);
     }
     [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
       toViewController.view.transform = CGAffineTransformIdentity;
       toViewController.navigationController.navigationBar.transform = CGAffineTransformIdentity;
+      if (!toViewController.hidesBottomBarWhenPushed) {
+        toViewController.tabBarController.tabBar.transform = CGAffineTransformIdentity;
+      }
       snapShotView.transform = CGAffineTransformMakeScale(0.95, 0.95);
     } completion:^(BOOL finished) {
       STMTransitionSnapshot *snapshot = [[STMTransitionSnapshot alloc] init];
@@ -74,12 +79,20 @@ static NSInteger const kSTMSnapshotViewTag = 19999;
     if (cachedView) {
       [containerView addSubview:cachedView];
       [containerView addSubview:fromViewController.view];
+      toViewController.tabBarController.tabBar.alpha = 0;
+      UIView *tabBar = nil;
+      if (fromViewController.tabBarController.tabBar && !fromViewController.hidesBottomBarWhenPushed) {
+        tabBar = [keyWindow snapshotViewAfterScreenUpdates:NO];
+        tabBar.frame = fromViewController.view.bounds;
+        [fromViewController.view addSubview:tabBar];
+      }
       [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
         fromViewController.view.transform = CGAffineTransformMakeTranslation(containerView.bounds.size.width, 0);
         fromViewController.navigationController.navigationBar.transform = CGAffineTransformMakeTranslation(containerView.bounds.size.width, 0);
         [cachedView viewWithTag:kSTMSnapshotViewTag].transform = CGAffineTransformIdentity;
       } completion:^(BOOL finished) {
         toViewController.navigationController.navigationBar.transform = CGAffineTransformIdentity;
+        toViewController.tabBarController.tabBar.alpha = 1;
         [cachedView removeFromSuperview];
         [self.cachedSnapShotViews removeObject:cachedSnapshot];
         [containerView addSubview:toViewController.view];
