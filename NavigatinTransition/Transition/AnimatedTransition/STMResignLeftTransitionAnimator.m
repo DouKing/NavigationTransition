@@ -94,7 +94,9 @@ static NSInteger const kSTMSnapshotViewTag = 19999;
         toViewController.navigationController.navigationBar.transform = CGAffineTransformIdentity;
         toViewController.tabBarController.tabBar.alpha = 1;
         [cachedView removeFromSuperview];
-        [self.cachedSnapShotViews removeObject:cachedSnapshot];
+        if (![transitionContext transitionWasCancelled]) {
+          [self.cachedSnapShotViews removeObject:cachedSnapshot];
+        }
         [containerView addSubview:toViewController.view];
         [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
       }];
