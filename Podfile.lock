@@ -1,11 +1,21 @@
 PODS:
-  - StromFacilitate (0.1.3)
+  - StromFacilitate (0.1.4):
+    - StromFacilitate/Config (= 0.1.4)
+    - StromFacilitate/Foundation (= 0.1.4)
+    - StromFacilitate/Security (= 0.1.4)
+    - StromFacilitate/Style (= 0.1.4)
+    - StromFacilitate/Utilities (= 0.1.4)
+  - StromFacilitate/Config (0.1.4)
+  - StromFacilitate/Foundation (0.1.4)
+  - StromFacilitate/Security (0.1.4)
+  - StromFacilitate/Style (0.1.4)
+  - StromFacilitate/Utilities (0.1.4)
 
 DEPENDENCIES:
   - StromFacilitate
 
 SPEC CHECKSUMS:
-  StromFacilitate: 287f2748a0db539a6e5ec66d76bbeaf6b972956a
+  StromFacilitate: 175a24d1f04f94c8d3b6d34e21f8141ce880190e
 
 PODFILE CHECKSUM: 36e664b292f569d9e489d1cb14bf534a49842912
 
