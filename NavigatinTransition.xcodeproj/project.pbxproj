@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		000614BE1E127F9A008C031A /* UINavigationController+STMTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 000614BD1E127F9A008C031A /* UINavigationController+STMTransition.m */; };
 		B88119751D53163500238644 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B88119741D53163500238644 /* main.m */; };
 		B88119781D53163500238644 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B88119771D53163500238644 /* AppDelegate.m */; };
 		B881197B1D53163500238644 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B881197A1D53163500238644 /* ViewController.m */; };
@@ -17,11 +18,12 @@
 		B88119981D53171000238644 /* STMResignLeftTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B881198F1D53171000238644 /* STMResignLeftTransitionAnimator.m */; };
 		B88119991D53171000238644 /* STMTransitionSnapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = B88119911D53171000238644 /* STMTransitionSnapshot.m */; };
 		B881199B1D53171000238644 /* UIViewController+STMTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = B88119961D53171000238644 /* UIViewController+STMTransition.m */; };
-		B8CA35E21D656ADB00CDE01C /* STMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CA35E11D656ADB00CDE01C /* STMNavigationController.m */; };
 		B9353B161E87F71070CA79BC /* libPods-NavigatinTransition.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 403FDC675506633C7FBDD00A /* libPods-NavigatinTransition.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		000614BC1E127F9A008C031A /* UINavigationController+STMTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+STMTransition.h"; sourceTree = "<group>"; };
+		000614BD1E127F9A008C031A /* UINavigationController+STMTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+STMTransition.m"; sourceTree = "<group>"; };
 		11D72E05F3D794A750FF81BA /* Pods-NavigatinTransition.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavigatinTransition.release.xcconfig"; path = "Pods/Target Support Files/Pods-NavigatinTransition/Pods-NavigatinTransition.release.xcconfig"; sourceTree = "<group>"; };
 		2CA02E990E08950F1D4280BA /* Pods-NavigatinTransition.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavigatinTransition.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NavigatinTransition/Pods-NavigatinTransition.debug.xcconfig"; sourceTree = "<group>"; };
 		403FDC675506633C7FBDD00A /* libPods-NavigatinTransition.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NavigatinTransition.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,8 +46,6 @@
 		B88119921D53171000238644 /* STMNavigationTransitionStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMNavigationTransitionStyle.h; sourceTree = "<group>"; };
 		B88119951D53171000238644 /* UIViewController+STMTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+STMTransition.h"; sourceTree = "<group>"; };
 		B88119961D53171000238644 /* UIViewController+STMTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+STMTransition.m"; sourceTree = "<group>"; };
-		B8CA35E01D656ADB00CDE01C /* STMNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMNavigationController.h; sourceTree = "<group>"; };
-		B8CA35E11D656ADB00CDE01C /* STMNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,8 +119,8 @@
 				B88119921D53171000238644 /* STMNavigationTransitionStyle.h */,
 				B88119951D53171000238644 /* UIViewController+STMTransition.h */,
 				B88119961D53171000238644 /* UIViewController+STMTransition.m */,
-				B8CA35E01D656ADB00CDE01C /* STMNavigationController.h */,
-				B8CA35E11D656ADB00CDE01C /* STMNavigationController.m */,
+				000614BC1E127F9A008C031A /* UINavigationController+STMTransition.h */,
+				000614BD1E127F9A008C031A /* UINavigationController+STMTransition.m */,
 			);
 			path = Transition;
 			sourceTree = "<group>";
@@ -183,7 +183,7 @@
 		B88119681D53163500238644 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = secoo;
 				TargetAttributes = {
 					B881196F1D53163500238644 = {
@@ -276,13 +276,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				000614BE1E127F9A008C031A /* UINavigationController+STMTransition.m in Sources */,
 				B881197B1D53163500238644 /* ViewController.m in Sources */,
 				B88119781D53163500238644 /* AppDelegate.m in Sources */,
 				B88119981D53171000238644 /* STMResignLeftTransitionAnimator.m in Sources */,
 				B881199B1D53171000238644 /* UIViewController+STMTransition.m in Sources */,
 				B88119991D53171000238644 /* STMTransitionSnapshot.m in Sources */,
 				B88119751D53163500238644 /* main.m in Sources */,
-				B8CA35E21D656ADB00CDE01C /* STMNavigationController.m in Sources */,
 				B88119971D53171000238644 /* STMBaseTransitionAnimator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,8 +323,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -368,8 +370,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

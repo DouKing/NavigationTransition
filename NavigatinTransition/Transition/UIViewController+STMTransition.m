@@ -14,7 +14,11 @@
 - (STMNavigationTransitionStyle)navigationTransitionStyle {
   NSNumber *style = objc_getAssociatedObject(self, @selector(navigationTransitionStyle));
   if (!style) {
-    style = @(STMNavigationTransitionStyleNone);
+    if ([self isKindOfClass:[UINavigationController class]]) {
+      style = @(STMNavigationTransitionStyleSystem);
+    } else {
+      style = @(STMNavigationTransitionStyleNone);
+    }
     self.navigationTransitionStyle = [style integerValue];
   }
   return [style integerValue];

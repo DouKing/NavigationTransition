@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "STMNavigationTransitionStyle.h"
+#import "UIViewController+STMTransition.h"
 
 @interface UINavigationController (STMTransition)
-
-@property (nonatomic, assign) STMNavigationTransitionStyle transitionStyle;
 
 @end
