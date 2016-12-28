@@ -32,13 +32,14 @@ static NSInteger const kSTMSnapshotViewTag = 19999;
   if (UINavigationControllerOperationPush == self.operation) {
     UIView *maskView = [[UIView alloc] initWithFrame:containerView.bounds];
     maskView.backgroundColor = [UIColor blackColor];
-    [containerView addSubview:maskView];
     
-    UIView *snapShotView = [keyWindow snapshotViewAfterScreenUpdates:NO];
+    UIImage *snapImage = [self imageFromView:keyWindow];
+    UIImageView *snapShotView = [[UIImageView alloc] initWithImage:snapImage];
     snapShotView.frame = maskView.bounds;
     snapShotView.tag = kSTMSnapshotViewTag;
     [maskView addSubview:snapShotView];
     
+    [containerView addSubview:maskView];
     [containerView addSubview:toViewController.view];
     toViewController.view.transform = CGAffineTransformMakeTranslation(containerView.bounds.size.width, 0);
     toViewController.navigationController.navigationBar.transform = CGAffineTransformMakeTranslation(containerView.bounds.size.width, 0);
@@ -105,6 +106,18 @@ static NSInteger const kSTMSnapshotViewTag = 19999;
     }
   } else {
     [super animateTransition:transitionContext];
+  }
+}
+
+// iOS10 上系统截图方法失效，以此替代
+- (UIImage *)imageFromView:(UIView *)snapView {
+  @autoreleasepool {
+    UIGraphicsBeginImageContext(snapView.frame.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [snapView.layer renderInContext:context];
+    UIImage *targetImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return targetImage;
   }
 }
 
