@@ -13,4 +13,7 @@
 
 @property (nonatomic, assign) UINavigationControllerOperation operation;
 
+- (void)pushAnimateTransition:(id<UIViewControllerContextTransitioning>)transitionContext;
+- (void)popAnimateTransition:(id<UIViewControllerContextTransitioning>)transitionContext;
+
 @end

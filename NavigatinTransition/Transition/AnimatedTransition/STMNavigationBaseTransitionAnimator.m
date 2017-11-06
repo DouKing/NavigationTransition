@@ -15,30 +15,44 @@
 }
 
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext {
-  UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
-  UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-  UIView *containerView = [transitionContext containerView];
   if (UINavigationControllerOperationPush == self.operation) {
-    [containerView addSubview:toVC.view];
-    toVC.view.transform = CGAffineTransformMakeTranslation(containerView.bounds.size.width, 0);
-    [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
-      toVC.view.transform = CGAffineTransformIdentity;
-    } completion:^(BOOL finished) {
-      [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
-    }];
+    [self pushAnimateTransition:transitionContext];
   } else if (UINavigationControllerOperationPop == self.operation) {
-    [containerView addSubview:toVC.view];
-    [containerView addSubview:fromVC.view];
-    [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
-      fromVC.view.transform = CGAffineTransformMakeTranslation(containerView.bounds.size.width, 0);
-    } completion:^(BOOL finished) {
-      fromVC.view.transform = CGAffineTransformIdentity;
-      [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
-    }];
+    [self popAnimateTransition:transitionContext];
   } else {
+    UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    UIView *containerView = [transitionContext containerView];
     [containerView addSubview:toVC.view];
     [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
   }
+}
+
+#pragma mark -
+
+- (void)pushAnimateTransition:(id<UIViewControllerContextTransitioning>)transitionContext {
+  UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+  UIView *containerView = [transitionContext containerView];
+  [containerView addSubview:toVC.view];
+  toVC.view.transform = CGAffineTransformMakeTranslation(containerView.bounds.size.width, 0);
+  [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
+    toVC.view.transform = CGAffineTransformIdentity;
+  } completion:^(BOOL finished) {
+    [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+  }];
+}
+
+- (void)popAnimateTransition:(id<UIViewControllerContextTransitioning>)transitionContext {
+  UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+  UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+  UIView *containerView = [transitionContext containerView];
+  [containerView addSubview:toVC.view];
+  [containerView addSubview:fromVC.view];
+  [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
+    fromVC.view.transform = CGAffineTransformMakeTranslation(containerView.bounds.size.width, 0);
+  } completion:^(BOOL finished) {
+    fromVC.view.transform = CGAffineTransformIdentity;
+    [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+  }];
 }
 
 @end
