@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "UIViewController+STMTransition.h"
 
 @interface AppDelegate ()
 
@@ -17,9 +16,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   // Override point for customization after application launch.
-  UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
-  UINavigationController *nav = (UINavigationController *)([tabBarController viewControllers].firstObject);
-  nav.navigationTransitionStyle = STMNavigationTransitionStyleResignLeft;
   return YES;
 }
 

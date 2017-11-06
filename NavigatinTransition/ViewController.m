@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "UIColor+STM.h"
+#import "UIViewController+STMTransition.h"
 
 @interface ViewController ()
 
@@ -17,17 +18,11 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  // Do any additional setup after loading the view, typically from a nib.
-  self.view.backgroundColor = [UIColor stm_randomColor];
-  
-  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRedo target:self action:@selector(_pushAction)];
+  self.view.backgroundColor = UIColor.stm_randomColor;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-//  if (self.navigationController.viewControllers.count > 1) {
-//    [self.navigationController setNavigationBarHidden:YES animated:YES];
-//  }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -40,9 +35,10 @@
   // Dispose of any resources that can be recreated.
 }
 
-- (void)_pushAction {
+- (IBAction)_pushAction {
   ViewController *vc = [[ViewController alloc] init];
   vc.hidesBottomBarWhenPushed = YES;
+  vc.navigationTransitionStyle = self.navigationTransitionStyle;
   [self.navigationController pushViewController:vc animated:YES];
 }
 
