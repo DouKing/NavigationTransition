@@ -14,8 +14,8 @@
 		B881197E1D53163500238644 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B881197C1D53163500238644 /* Main.storyboard */; };
 		B88119801D53163500238644 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B881197F1D53163500238644 /* Assets.xcassets */; };
 		B88119831D53163500238644 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B88119811D53163500238644 /* LaunchScreen.storyboard */; };
-		B88119971D53171000238644 /* STMBaseTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B881198D1D53171000238644 /* STMBaseTransitionAnimator.m */; };
-		B88119981D53171000238644 /* STMResignLeftTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B881198F1D53171000238644 /* STMResignLeftTransitionAnimator.m */; };
+		B88119971D53171000238644 /* STMNavigationBaseTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B881198D1D53171000238644 /* STMNavigationBaseTransitionAnimator.m */; };
+		B88119981D53171000238644 /* STMNavigationResignLeftTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B881198F1D53171000238644 /* STMNavigationResignLeftTransitionAnimator.m */; };
 		B88119991D53171000238644 /* STMTransitionSnapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = B88119911D53171000238644 /* STMTransitionSnapshot.m */; };
 		B881199B1D53171000238644 /* UIViewController+STMTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = B88119961D53171000238644 /* UIViewController+STMTransition.m */; };
 		B9353B161E87F71070CA79BC /* libPods-NavigatinTransition.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 403FDC675506633C7FBDD00A /* libPods-NavigatinTransition.a */; };
@@ -37,10 +37,10 @@
 		B881197F1D53163500238644 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B88119821D53163500238644 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B88119841D53163500238644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B881198C1D53171000238644 /* STMBaseTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMBaseTransitionAnimator.h; sourceTree = "<group>"; };
-		B881198D1D53171000238644 /* STMBaseTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMBaseTransitionAnimator.m; sourceTree = "<group>"; };
-		B881198E1D53171000238644 /* STMResignLeftTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMResignLeftTransitionAnimator.h; sourceTree = "<group>"; };
-		B881198F1D53171000238644 /* STMResignLeftTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMResignLeftTransitionAnimator.m; sourceTree = "<group>"; };
+		B881198C1D53171000238644 /* STMNavigationBaseTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMNavigationBaseTransitionAnimator.h; sourceTree = "<group>"; };
+		B881198D1D53171000238644 /* STMNavigationBaseTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMNavigationBaseTransitionAnimator.m; sourceTree = "<group>"; };
+		B881198E1D53171000238644 /* STMNavigationResignLeftTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMNavigationResignLeftTransitionAnimator.h; sourceTree = "<group>"; };
+		B881198F1D53171000238644 /* STMNavigationResignLeftTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMNavigationResignLeftTransitionAnimator.m; sourceTree = "<group>"; };
 		B88119901D53171000238644 /* STMTransitionSnapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMTransitionSnapshot.h; sourceTree = "<group>"; };
 		B88119911D53171000238644 /* STMTransitionSnapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMTransitionSnapshot.m; sourceTree = "<group>"; };
 		B88119921D53171000238644 /* STMNavigationTransitionStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMNavigationTransitionStyle.h; sourceTree = "<group>"; };
@@ -128,10 +128,10 @@
 		B881198B1D53171000238644 /* AnimatedTransition */ = {
 			isa = PBXGroup;
 			children = (
-				B881198C1D53171000238644 /* STMBaseTransitionAnimator.h */,
-				B881198D1D53171000238644 /* STMBaseTransitionAnimator.m */,
-				B881198E1D53171000238644 /* STMResignLeftTransitionAnimator.h */,
-				B881198F1D53171000238644 /* STMResignLeftTransitionAnimator.m */,
+				B881198C1D53171000238644 /* STMNavigationBaseTransitionAnimator.h */,
+				B881198D1D53171000238644 /* STMNavigationBaseTransitionAnimator.m */,
+				B881198E1D53171000238644 /* STMNavigationResignLeftTransitionAnimator.h */,
+				B881198F1D53171000238644 /* STMNavigationResignLeftTransitionAnimator.m */,
 				B88119901D53171000238644 /* STMTransitionSnapshot.h */,
 				B88119911D53171000238644 /* STMTransitionSnapshot.m */,
 			);
@@ -279,11 +279,11 @@
 				000614BE1E127F9A008C031A /* UINavigationController+STMTransition.m in Sources */,
 				B881197B1D53163500238644 /* ViewController.m in Sources */,
 				B88119781D53163500238644 /* AppDelegate.m in Sources */,
-				B88119981D53171000238644 /* STMResignLeftTransitionAnimator.m in Sources */,
+				B88119981D53171000238644 /* STMNavigationResignLeftTransitionAnimator.m in Sources */,
 				B881199B1D53171000238644 /* UIViewController+STMTransition.m in Sources */,
 				B88119991D53171000238644 /* STMTransitionSnapshot.m in Sources */,
 				B88119751D53163500238644 /* main.m in Sources */,
-				B88119971D53171000238644 /* STMBaseTransitionAnimator.m in Sources */,
+				B88119971D53171000238644 /* STMNavigationBaseTransitionAnimator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

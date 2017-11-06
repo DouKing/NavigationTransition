@@ -6,9 +6,9 @@
 //  Copyright © 2016年 secoo. All rights reserved.
 //
 
-#import "STMBaseTransitionAnimator.h"
+#import "STMNavigationBaseTransitionAnimator.h"
 
-@implementation STMBaseTransitionAnimator
+@implementation STMNavigationBaseTransitionAnimator
 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
   return 0.35;

@@ -6,18 +6,18 @@
 //  Copyright © 2016年 secoo. All rights reserved.
 //
 
-#import "STMResignLeftTransitionAnimator.h"
+#import "STMNavigationResignLeftTransitionAnimator.h"
 #import "STMTransitionSnapshot.h"
 
 static NSInteger const kSTMSnapshotViewTag = 19999;
 
-@interface STMResignLeftTransitionAnimator ()
+@interface STMNavigationResignLeftTransitionAnimator ()
 
 @property (nonatomic, strong) NSMutableArray<STMTransitionSnapshot *> *cachedSnapShotViews;
 
 @end
 
-@implementation STMResignLeftTransitionAnimator
+@implementation STMNavigationResignLeftTransitionAnimator
 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
   return 0.35;

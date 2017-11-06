@@ -6,8 +6,8 @@
 //  Copyright © 2016年 secoo. All rights reserved.
 //
 
-#import "STMBaseTransitionAnimator.h"
+#import "STMNavigationBaseTransitionAnimator.h"
 
-@interface STMResignLeftTransitionAnimator : STMBaseTransitionAnimator
+@interface STMNavigationResignLeftTransitionAnimator : STMNavigationBaseTransitionAnimator
 
 @end

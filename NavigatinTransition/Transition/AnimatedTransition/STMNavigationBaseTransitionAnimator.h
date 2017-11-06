@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 @import UIKit;
 
-@interface STMBaseTransitionAnimator : NSObject<UIViewControllerAnimatedTransitioning>
+@interface STMNavigationBaseTransitionAnimator : NSObject<UIViewControllerAnimatedTransitioning>
 
 @property (nonatomic, assign) UINavigationControllerOperation operation;
 

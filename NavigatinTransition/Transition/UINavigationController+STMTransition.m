@@ -8,15 +8,15 @@
 
 #import "UINavigationController+STMTransition.h"
 #import "STMObjectRuntime.h"
-#import "STMResignLeftTransitionAnimator.h"
+#import "STMNavigationResignLeftTransitionAnimator.h"
 
 @interface STMTransitionProxy : NSProxy<UINavigationControllerDelegate>
 
 @property (nonatomic, weak) id<UINavigationControllerDelegate> delegate;
 @property (nonatomic, weak) UINavigationController *navigationController;
 
-@property (nonatomic, strong) STMBaseTransitionAnimator *baseTransitionAnimator;
-@property (nonatomic, strong) STMResignLeftTransitionAnimator *resignLeftTransitionAnimator;
+@property (nonatomic, strong) STMNavigationBaseTransitionAnimator *baseTransitionAnimator;
+@property (nonatomic, strong) STMNavigationResignLeftTransitionAnimator *resignLeftTransitionAnimator;
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition *interactionController;
 @property (nonatomic, assign) BOOL interacting;
 @property (nonatomic, assign) BOOL gestureEnable;
@@ -155,7 +155,7 @@
   }
 }
 
-- (STMBaseTransitionAnimator *)_animatorForTransitionStyle:(STMNavigationTransitionStyle)transitionStyle {
+- (STMNavigationBaseTransitionAnimator *)_animatorForTransitionStyle:(STMNavigationTransitionStyle)transitionStyle {
   switch (transitionStyle) {
     case STMNavigationTransitionStyleSystem: {
       return nil;
@@ -192,7 +192,7 @@
   if (STMNavigationTransitionStyleNone == transitionStyle) {
     transitionStyle = self.navigationController.navigationTransitionStyle;
   }
-  STMBaseTransitionAnimator *animator = [self _animatorForTransitionStyle:transitionStyle];
+  STMNavigationBaseTransitionAnimator *animator = [self _animatorForTransitionStyle:transitionStyle];
   animator.operation = operation;
   self.gestureEnable = (animator != nil);
   return animator;
@@ -207,16 +207,16 @@
   return _interactionController;
 }
 
-- (STMResignLeftTransitionAnimator *)resignLeftTransitionAnimator {
+- (STMNavigationResignLeftTransitionAnimator *)resignLeftTransitionAnimator {
   if (!_resignLeftTransitionAnimator) {
-    _resignLeftTransitionAnimator = [[STMResignLeftTransitionAnimator alloc] init];
+    _resignLeftTransitionAnimator = [[STMNavigationResignLeftTransitionAnimator alloc] init];
   }
   return _resignLeftTransitionAnimator;
 }
 
-- (STMBaseTransitionAnimator *)baseTransitionAnimator {
+- (STMNavigationBaseTransitionAnimator *)baseTransitionAnimator {
   if (!_baseTransitionAnimator) {
-    _baseTransitionAnimator = [[STMBaseTransitionAnimator alloc] init];
+    _baseTransitionAnimator = [[STMNavigationBaseTransitionAnimator alloc] init];
   }
   return _baseTransitionAnimator;
 }
