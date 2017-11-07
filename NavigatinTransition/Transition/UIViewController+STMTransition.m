@@ -7,9 +7,23 @@
 //
 
 #import "UIViewController+STMTransition.h"
-#import <objc/runtime.h>
+#import <StromFacilitate/STMObjectRuntime.h>
 
 @implementation UIViewController (STMTransition)
+
++ (void)load {
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    SEL originalSel = @selector(viewWillAppear:);
+    SEL swizzledSel = @selector(stm_viewWillAppear:);
+    STMSwizzMethod(self, originalSel, swizzledSel);
+  });
+}
+
+- (void)stm_viewWillAppear:(BOOL)animated {
+  [self stm_viewWillAppear:animated];
+  [self.navigationController setNavigationBarHidden:self.stm_prefersNavigationBarHidden animated:animated];
+}
 
 - (STMNavigationTransitionStyle)navigationTransitionStyle {
   NSNumber *style = objc_getAssociatedObject(self, @selector(navigationTransitionStyle));
@@ -51,6 +65,14 @@
 - (void)setStm_interactivePopMaxAllowedInitialDistanceToLeftEdge:(CGFloat)distance {
   SEL key = @selector(stm_interactivePopMaxAllowedInitialDistanceToLeftEdge);
   objc_setAssociatedObject(self, key, @(MAX(0, distance)), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (BOOL)stm_prefersNavigationBarHidden {
+  return [objc_getAssociatedObject(self, _cmd) boolValue];
+}
+
+- (void)setStm_prefersNavigationBarHidden:(BOOL)hidden {
+  objc_setAssociatedObject(self, @selector(stm_prefersNavigationBarHidden), @(hidden), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end

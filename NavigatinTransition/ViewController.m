@@ -19,23 +19,25 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.view.backgroundColor = UIColor.stm_randomColor;
+  UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 200, 50)];
+  btn.backgroundColor = [UIColor whiteColor];
+  btn.layer.borderColor = [UIColor lightGrayColor].CGColor;
+  btn.layer.borderWidth = 1;
+  btn.layer.cornerRadius = 5;
+  btn.clipsToBounds = YES;
+  [btn addTarget:self action:@selector(_pushAction) forControlEvents:UIControlEventTouchUpInside];
+  [self.view addSubview:btn];
+  btn.center = self.view.center;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-  [super viewWillAppear:animated];
+- (BOOL)stm_prefersNavigationBarHidden {
+  if (self.navigationController.viewControllers.count % 2) {
+    return YES;
+  }
+  return NO;
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-  [super viewWillDisappear:animated];
-  [self.navigationController setNavigationBarHidden:NO animated:YES];
-}
-
-- (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)_pushAction {
+- (void)_pushAction {
   ViewController *vc = [[ViewController alloc] init];
   vc.hidesBottomBarWhenPushed = YES;
   vc.navigationTransitionStyle = self.navigationTransitionStyle;

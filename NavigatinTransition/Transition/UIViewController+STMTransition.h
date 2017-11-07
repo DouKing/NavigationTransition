@@ -17,4 +17,6 @@
 
 @property (nonatomic, assign) CGFloat stm_interactivePopMaxAllowedInitialDistanceToLeftEdge;
 
+@property (nonatomic, assign) BOOL stm_prefersNavigationBarHidden;
+
 @end
