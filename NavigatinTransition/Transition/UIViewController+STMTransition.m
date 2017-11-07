@@ -32,4 +32,25 @@
   objc_setAssociatedObject(self, @selector(navigationTransitionStyle), @(navigationTransitionStyle), OBJC_ASSOCIATION_RETAIN);
 }
 
+- (BOOL)stm_interactivePopDisabled {
+  return [objc_getAssociatedObject(self, _cmd) boolValue];
+}
+
+- (void)setStm_interactivePopDisabled:(BOOL)stm_interactivePopDisabled {
+  objc_setAssociatedObject(self, @selector(stm_interactivePopDisabled), @(stm_interactivePopDisabled), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (CGFloat)stm_interactivePopMaxAllowedInitialDistanceToLeftEdge {
+#if CGFLOAT_IS_DOUBLE
+  return [objc_getAssociatedObject(self, _cmd) doubleValue];
+#else
+  return [objc_getAssociatedObject(self, _cmd) floatValue];
+#endif
+}
+
+- (void)setStm_interactivePopMaxAllowedInitialDistanceToLeftEdge:(CGFloat)distance {
+  SEL key = @selector(stm_interactivePopMaxAllowedInitialDistanceToLeftEdge);
+  objc_setAssociatedObject(self, key, @(MAX(0, distance)), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 @end

@@ -10,6 +10,12 @@
 #import "STMObjectRuntime.h"
 #import "STMNavigationResignLeftTransitionAnimator.h"
 
+@interface STMPopGestureRecognizerDelegate : NSObject <UIGestureRecognizerDelegate>
+
+@property (nonatomic, weak) UINavigationController *navigationController;
+
+@end
+
 @interface STMTransitionProxy : NSProxy<UINavigationControllerDelegate>
 
 @property (nonatomic, weak) id<UINavigationControllerDelegate> delegate;
@@ -28,7 +34,8 @@
 @interface UINavigationController ()<UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) STMTransitionProxy *proxy;
-@property (nonatomic, strong) UIScreenEdgePanGestureRecognizer *screenPan;
+@property (nonatomic, strong) UIPanGestureRecognizer *screenPan;
+@property (nonatomic, strong) STMPopGestureRecognizerDelegate *popGestureDelegate;
 
 @end
 
@@ -53,8 +60,9 @@
 - (void)stm_viewDidLoad {
   [self stm_viewDidLoad];
   self.delegate = self.delegate;
-  self.interactivePopGestureRecognizer.delegate = self;
-  [self.view addGestureRecognizer:self.screenPan];
+  [self.interactivePopGestureRecognizer.view addGestureRecognizer:self.stm_fullscreenInteractivePopGestureRecognizer];
+  [self.interactivePopGestureRecognizer.view addGestureRecognizer:self.screenPan];
+  self.interactivePopGestureRecognizer.enabled = NO;
 }
 
 #pragma mark - setter & getter
@@ -82,18 +90,46 @@
   objc_setAssociatedObject(self, @selector(proxy), proxy, OBJC_ASSOCIATION_RETAIN);
 }
 
-- (UIScreenEdgePanGestureRecognizer *)screenPan {
-  UIScreenEdgePanGestureRecognizer *gesture = objc_getAssociatedObject(self, _cmd);
+- (UIPanGestureRecognizer *)screenPan {
+  UIPanGestureRecognizer *gesture = objc_getAssociatedObject(self, _cmd);
   if (!gesture) {
-    gesture = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self.proxy action:@selector(_handleInteractionPopGesture:)];
-    gesture.edges = UIRectEdgeLeft;
+    gesture = [[UIPanGestureRecognizer alloc] initWithTarget:self.proxy action:@selector(_handleInteractionPopGesture:)];
+    gesture.delegate = self.popGestureDelegate;
     self.screenPan = gesture;
   }
   return gesture;
 }
 
-- (void)setScreenPan:(UIScreenEdgePanGestureRecognizer *)screenPan {
+- (void)setScreenPan:(UIPanGestureRecognizer *)screenPan {
   objc_setAssociatedObject(self, @selector(screenPan), screenPan, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (UIPanGestureRecognizer *)stm_fullscreenInteractivePopGestureRecognizer {
+  UIPanGestureRecognizer *gesture = objc_getAssociatedObject(self, _cmd);
+  if (!gesture) {
+    NSArray *internalTargets = [self.interactivePopGestureRecognizer valueForKey:@"targets"];
+    id internalTarget = [internalTargets.firstObject valueForKey:@"target"];
+    SEL internalAction = NSSelectorFromString(@"handleNavigationTransition:");
+    gesture = [[UIPanGestureRecognizer alloc] initWithTarget:internalTarget action:internalAction];
+    gesture.delegate = self.popGestureDelegate;
+
+    objc_setAssociatedObject(self, _cmd, gesture, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+  }
+  return gesture;
+}
+
+- (void)setPopGestureDelegate:(STMPopGestureRecognizerDelegate *)popGestureDelegate {
+  objc_setAssociatedObject(self, @selector(popGestureDelegate), popGestureDelegate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (STMPopGestureRecognizerDelegate *)popGestureDelegate {
+  STMPopGestureRecognizerDelegate *popGestureDelegate = objc_getAssociatedObject(self, _cmd);
+  if (!popGestureDelegate) {
+    popGestureDelegate = [[STMPopGestureRecognizerDelegate alloc] init];
+    popGestureDelegate.navigationController = self;
+    self.popGestureDelegate = popGestureDelegate;
+  }
+  return popGestureDelegate;
 }
 
 @end
@@ -117,7 +153,8 @@
 }
 
 - (BOOL)respondsToSelector:(SEL)aSelector {
-  if (sel_isEqual(aSelector, @selector(navigationController:animationControllerForOperation:fromViewController:toViewController:)) || sel_isEqual(aSelector, @selector(navigationController:interactionControllerForAnimationController:))) {
+  if (  sel_isEqual(aSelector, @selector(navigationController:animationControllerForOperation:fromViewController:toViewController:))
+     || sel_isEqual(aSelector, @selector(navigationController:interactionControllerForAnimationController:))) {
     return YES;
   }
   return [self.delegate respondsToSelector:aSelector];
@@ -171,19 +208,36 @@
   }
 }
 
+- (void)_useSystemAnimatorOrNot:(BOOL)use {
+  if (use) {
+    self.navigationController.screenPan.enabled = NO;
+    self.navigationController.stm_fullscreenInteractivePopGestureRecognizer.enabled = YES;
+  } else {
+    self.navigationController.screenPan.enabled = YES;
+    self.navigationController.stm_fullscreenInteractivePopGestureRecognizer.enabled = NO;
+  }
+}
+
 #pragma mark - UINavigationControllerDelegate
 
-- (id<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController interactionControllerForAnimationController:(id<UIViewControllerAnimatedTransitioning>)animationController {
+- (id<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController
+                         interactionControllerForAnimationController:(id<UIViewControllerAnimatedTransitioning>)animationController {
   if ([self.delegate respondsToSelector:_cmd]) {
     return [self.delegate navigationController:navigationController interactionControllerForAnimationController:animationController];
   }
   return self.interacting ? self.interactionController : nil;
 }
 
-- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController *)fromVC
+                                                 toViewController:(UIViewController *)toVC {
   if ([self.delegate respondsToSelector:_cmd]) {
-    id<UIViewControllerAnimatedTransitioning> animator = [self.delegate navigationController:navigationController animationControllerForOperation:operation fromViewController:fromVC toViewController:toVC];
-    self.navigationController.screenPan.enabled = (animator != nil);
+    id<UIViewControllerAnimatedTransitioning> animator = [self.delegate navigationController:navigationController
+                                                             animationControllerForOperation:operation
+                                                                          fromViewController:fromVC
+                                                                            toViewController:toVC];
+    [self _useSystemAnimatorOrNot:animator == nil];
     return animator;
   }
 
@@ -194,7 +248,7 @@
   }
   STMNavigationBaseTransitionAnimator *animator = [self _animatorForTransitionStyle:transitionStyle];
   animator.operation = operation;
-  self.navigationController.screenPan.enabled = (animator != nil);
+  [self _useSystemAnimatorOrNot:animator == nil];
   return animator;
 }
 
@@ -219,6 +273,48 @@
     _baseTransitionAnimator = [[STMNavigationBaseTransitionAnimator alloc] init];
   }
   return _baseTransitionAnimator;
+}
+
+@end
+
+
+@implementation STMPopGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer {
+  // Ignore when no view controller is pushed into the navigation stack.
+  if (self.navigationController.viewControllers.count <= 1) {
+    return NO;
+  }
+
+  // Ignore when the active view controller doesn't allow interactive pop.
+  UIViewController *topViewController = self.navigationController.viewControllers.lastObject;
+  if (topViewController.stm_interactivePopDisabled) {
+    return NO;
+  }
+
+  // Ignore when the beginning location is beyond max allowed initial distance to left edge.
+  CGFloat maxAllowedInitialDistance = topViewController.stm_interactivePopMaxAllowedInitialDistanceToLeftEdge;
+  if (maxAllowedInitialDistance > 0) {
+    CGPoint beginningLocation = [gestureRecognizer locationInView:gestureRecognizer.view];
+    if (beginningLocation.x > maxAllowedInitialDistance) {
+      return NO;
+    }
+  }
+
+  // Ignore pan gesture when the navigation controller is currently in transition.
+  if ([[self.navigationController valueForKey:@"_isTransitioning"] boolValue]) {
+    return NO;
+  }
+
+  // Prevent calling the handler when the gesture begins in an opposite direction.
+  CGPoint translation = [gestureRecognizer translationInView:gestureRecognizer.view];
+  BOOL isLeftToRight = [UIApplication sharedApplication].userInterfaceLayoutDirection == UIUserInterfaceLayoutDirectionLeftToRight;
+  CGFloat multiplier = isLeftToRight ? 1 : - 1;
+  if ((translation.x * multiplier) <= 0) {
+    return NO;
+  }
+
+  return YES;
 }
 
 @end

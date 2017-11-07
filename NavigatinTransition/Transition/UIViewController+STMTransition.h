@@ -13,4 +13,8 @@
 
 @property (nonatomic, assign) STMNavigationTransitionStyle navigationTransitionStyle;
 
+@property (nonatomic, assign) BOOL stm_interactivePopDisabled;
+
+@property (nonatomic, assign) CGFloat stm_interactivePopMaxAllowedInitialDistanceToLeftEdge;
+
 @end
