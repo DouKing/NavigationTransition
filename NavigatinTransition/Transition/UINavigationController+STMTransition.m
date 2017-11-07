@@ -19,7 +19,6 @@
 @property (nonatomic, strong) STMNavigationResignLeftTransitionAnimator *resignLeftTransitionAnimator;
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition *interactionController;
 @property (nonatomic, assign) BOOL interacting;
-@property (nonatomic, assign) BOOL gestureEnable;
 
 - (instancetype)init;
 - (void)_handleInteractionPopGesture:(UIScreenEdgePanGestureRecognizer *)gesture;
@@ -184,17 +183,18 @@
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
   if ([self.delegate respondsToSelector:_cmd]) {
     id<UIViewControllerAnimatedTransitioning> animator = [self.delegate navigationController:navigationController animationControllerForOperation:operation fromViewController:fromVC toViewController:toVC];
-    self.gestureEnable = (animator != nil);
+    self.navigationController.screenPan.enabled = (animator != nil);
     return animator;
   }
-  
-  STMNavigationTransitionStyle transitionStyle = (UINavigationControllerOperationPush == operation) ? toVC.navigationTransitionStyle : fromVC.navigationTransitionStyle;
+
+  UIViewController *transitionVC = (UINavigationControllerOperationPush == operation) ? toVC : fromVC;
+  STMNavigationTransitionStyle transitionStyle = transitionVC.navigationTransitionStyle;
   if (STMNavigationTransitionStyleNone == transitionStyle) {
     transitionStyle = self.navigationController.navigationTransitionStyle;
   }
   STMNavigationBaseTransitionAnimator *animator = [self _animatorForTransitionStyle:transitionStyle];
   animator.operation = operation;
-  self.gestureEnable = (animator != nil);
+  self.navigationController.screenPan.enabled = (animator != nil);
   return animator;
 }
 
@@ -219,15 +219,6 @@
     _baseTransitionAnimator = [[STMNavigationBaseTransitionAnimator alloc] init];
   }
   return _baseTransitionAnimator;
-}
-
-- (void)setGestureEnable:(BOOL)gestureEnable {
-  _gestureEnable = gestureEnable;
-  if (gestureEnable) {
-    [self.navigationController.view addGestureRecognizer:self.navigationController.screenPan];
-  } else {
-    [self.navigationController.view removeGestureRecognizer:self.navigationController.screenPan];
-  }
 }
 
 @end

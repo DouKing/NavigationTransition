@@ -25,6 +25,10 @@
 }
 
 - (void)setNavigationTransitionStyle:(STMNavigationTransitionStyle)navigationTransitionStyle {
+  if (   [self isKindOfClass:[UINavigationController class]]
+      && (STMNavigationTransitionStyleNone == navigationTransitionStyle)) {
+    navigationTransitionStyle = STMNavigationTransitionStyleSystem;
+  }
   objc_setAssociatedObject(self, @selector(navigationTransitionStyle), @(navigationTransitionStyle), OBJC_ASSOCIATION_RETAIN);
 }
 
