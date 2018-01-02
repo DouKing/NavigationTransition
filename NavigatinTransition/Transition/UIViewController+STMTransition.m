@@ -17,12 +17,21 @@
     SEL originalSel = @selector(viewWillAppear:);
     SEL swizzledSel = @selector(stm_viewWillAppear:);
     STMSwizzMethod(self, originalSel, swizzledSel);
+
+    originalSel = @selector(viewDidAppear:);
+    swizzledSel = @selector(stm_viewDidAppear:);
+    STMSwizzMethod(self, originalSel, swizzledSel);
   });
 }
 
 - (void)stm_viewWillAppear:(BOOL)animated {
   [self stm_viewWillAppear:animated];
   [self.navigationController setNavigationBarHidden:self.stm_prefersNavigationBarHidden animated:animated];
+}
+
+- (void)stm_viewDidAppear:(BOOL)animated {
+  [self stm_viewDidAppear:animated];
+  self.navigationController.navigationBarHidden = self.stm_prefersNavigationBarHidden;
 }
 
 - (STMNavigationTransitionStyle)navigationTransitionStyle {

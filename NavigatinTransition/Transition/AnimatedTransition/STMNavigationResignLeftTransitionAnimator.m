@@ -83,8 +83,7 @@ static NSInteger const kSTMSnapshotViewTag = 19999;
     }
   }
   if (cachedView) {
-    [containerView addSubview:cachedView];
-    [containerView addSubview:fromViewController.view];
+    fromViewController.navigationController.navigationBarHidden = YES;
     toViewController.tabBarController.tabBar.alpha = 0;
     UIView *tabBar = nil;
     if (fromViewController.tabBarController.tabBar && !fromViewController.hidesBottomBarWhenPushed) {
@@ -92,6 +91,8 @@ static NSInteger const kSTMSnapshotViewTag = 19999;
       tabBar.frame = fromViewController.view.bounds;
       [fromViewController.view addSubview:tabBar];
     }
+    [containerView addSubview:cachedView];
+    [containerView addSubview:fromViewController.view];
     [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
       fromViewController.view.transform = CGAffineTransformMakeTranslation(containerView.bounds.size.width, 0);
       fromViewController.navigationController.navigationBar.transform = CGAffineTransformMakeTranslation(containerView.bounds.size.width, 0);
@@ -105,7 +106,8 @@ static NSInteger const kSTMSnapshotViewTag = 19999;
         [self.cachedSnapShotViews removeObject:cachedSnapshot];
       }
       [containerView addSubview:toViewController.view];
-      [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+      BOOL complete = ![transitionContext transitionWasCancelled];
+      [transitionContext completeTransition:complete];
     }];
   } else {
     [super popAnimateTransition:transitionContext];
