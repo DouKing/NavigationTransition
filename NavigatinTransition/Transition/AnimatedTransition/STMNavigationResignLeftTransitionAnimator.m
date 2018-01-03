@@ -38,8 +38,13 @@ static NSInteger const kSTMSnapshotViewTag = 19999;
   snapShotView.tag = kSTMSnapshotViewTag;
   [maskView addSubview:snapShotView];
 
+  UIView *layoutView = fromViewController.navigationController.navigationBar.superview;
   [containerView addSubview:maskView];
-  [containerView addSubview:toViewController.view];
+  if (toViewController.stm_prefersNavigationBarHidden) {
+    [layoutView addSubview:toViewController.view];
+  } else {
+    [containerView addSubview:toViewController.view];
+  }
   toViewController.view.transform = CGAffineTransformMakeTranslation(containerView.bounds.size.width, 0);
   toViewController.navigationController.navigationBar.transform = CGAffineTransformMakeTranslation(containerView.bounds.size.width, 0);
 
@@ -58,6 +63,8 @@ static NSInteger const kSTMSnapshotViewTag = 19999;
     }
     snapShotView.transform = CGAffineTransformMakeScale(0.95, 0.95);
   } completion:^(BOOL finished) {
+    [containerView addSubview:toViewController.view];
+
     STMTransitionSnapshot *snapshot = [[STMTransitionSnapshot alloc] init];
     snapshot.snapshotView = maskView;
     snapshot.viewController = fromViewController;
