@@ -8,6 +8,7 @@
 
 #import "STMNavigationResignLeftTransitionAnimator.h"
 #import "STMTransitionSnapshot.h"
+#import "UIViewController+STMTransition.h"
 
 static NSInteger const kSTMSnapshotViewTag = 19999;
 
@@ -49,7 +50,9 @@ static NSInteger const kSTMSnapshotViewTag = 19999;
   }
   [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
     toViewController.view.transform = CGAffineTransformIdentity;
-    toViewController.navigationController.navigationBar.transform = CGAffineTransformIdentity;
+    if (!toViewController.stm_prefersNavigationBarHidden) {
+      toViewController.navigationController.navigationBar.transform = CGAffineTransformIdentity;
+    }
     if (!toViewController.hidesBottomBarWhenPushed) {
       toViewController.tabBarController.tabBar.transform = CGAffineTransformIdentity;
     }
@@ -62,6 +65,7 @@ static NSInteger const kSTMSnapshotViewTag = 19999;
 
     [maskView removeFromSuperview];
     fromViewController.tabBarController.tabBar.alpha = 1;
+    toViewController.navigationController.navigationBar.transform = CGAffineTransformIdentity;
     [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
   }];
 }
