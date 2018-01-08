@@ -9,14 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "STMNavigationTransitionStyle.h"
 
+IB_DESIGNABLE
 @interface UIViewController (STMTransition)
 
 @property (nonatomic, assign) STMNavigationTransitionStyle navigationTransitionStyle;
 
-@property (nonatomic, assign) BOOL stm_interactivePopDisabled;
+@property (nonatomic, assign) IBInspectable BOOL stm_interactivePopDisabled;
 
-@property (nonatomic, assign) CGFloat stm_interactivePopMaxAllowedInitialDistanceToLeftEdge;
+@property (nonatomic, assign) IBInspectable CGFloat stm_interactivePopMaxAllowedInitialDistanceToLeftEdge;
 
-@property (nonatomic, assign) BOOL stm_prefersNavigationBarHidden;
+@property (nonatomic, assign) IBInspectable BOOL stm_prefersNavigationBarHidden;
+
+// adapter for `navigationTransitionStyle`, when you want to use `navigationTransitionStyle` in IB, use this.
+@property (nonatomic, assign) IBInspectable NSInteger navigationTransitionStyleAdapter;
 
 @end

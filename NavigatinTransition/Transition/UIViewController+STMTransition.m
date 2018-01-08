@@ -84,4 +84,13 @@
   objc_setAssociatedObject(self, @selector(stm_prefersNavigationBarHidden), @(hidden), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+- (void)setNavigationTransitionStyleAdapter:(NSInteger)navigationTransitionStyleAdapter {
+  objc_setAssociatedObject(self, @selector(navigationTransitionStyleAdapter), @(navigationTransitionStyleAdapter), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+  self.navigationTransitionStyle = navigationTransitionStyleAdapter;
+}
+
+- (NSInteger)navigationTransitionStyleAdapter {
+  return [objc_getAssociatedObject(self, _cmd) integerValue];
+}
+
 @end
