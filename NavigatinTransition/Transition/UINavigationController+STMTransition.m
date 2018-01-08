@@ -317,4 +317,13 @@
   return YES;
 }
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+  CGRect rect = [touch.view convertRect:touch.view.frame toView:self.navigationController.view];
+  // Ignore the touch on the navigation bar
+  if (CGRectContainsRect(self.navigationController.navigationBar.frame, rect)) {
+    return NO;
+  }
+  return YES;
+}
+
 @end
