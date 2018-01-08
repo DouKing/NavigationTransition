@@ -3,7 +3,7 @@
 //  StromFacilitate
 //
 //  Created by WuYikai on 16/7/26.
-//  Copyright © 2016年 secoo. All rights reserved.
+//  Copyright © 2016年 DouKing. All rights reserved.
 //
 
 #import "STMNavigationBaseTransitionAnimator.h"
