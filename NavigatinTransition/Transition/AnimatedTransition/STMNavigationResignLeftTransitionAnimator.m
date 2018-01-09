@@ -21,7 +21,7 @@ static NSInteger const kSTMSnapshotViewTag = 19999;
 @implementation STMNavigationResignLeftTransitionAnimator
 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
-  return 0.35;
+  return 0.25;
 }
 
 - (void)pushAnimateTransition:(id<UIViewControllerContextTransitioning>)transitionContext {
@@ -53,7 +53,7 @@ static NSInteger const kSTMSnapshotViewTag = 19999;
   } else {
     fromViewController.tabBarController.tabBar.transform = CGAffineTransformMakeTranslation(containerView.bounds.size.width, 0);
   }
-  [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
+  [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
     toViewController.view.transform = CGAffineTransformIdentity;
     toViewController.navigationController.navigationBar.transform = CGAffineTransformIdentity;
     if (!toViewController.hidesBottomBarWhenPushed) {
@@ -101,7 +101,7 @@ static NSInteger const kSTMSnapshotViewTag = 19999;
     }
     [containerView addSubview:cachedView];
     [containerView addSubview:fromViewController.view];
-    [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
+    [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
       fromViewController.view.transform = CGAffineTransformMakeTranslation(containerView.bounds.size.width, 0);
       fromViewController.navigationController.navigationBar.transform = CGAffineTransformMakeTranslation(containerView.bounds.size.width, 0);
       [cachedView viewWithTag:kSTMSnapshotViewTag].transform = CGAffineTransformIdentity;

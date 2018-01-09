@@ -177,7 +177,8 @@
     case UIGestureRecognizerStateEnded:
     case UIGestureRecognizerStateCancelled: {
       if (self.interacting) {
-        if (percent > 0.5) {
+        CGFloat velocityX = [gesture velocityInView:view].x;
+        if (percent > 0.5 || velocityX > 1000) {
           [self.interactionController finishInteractiveTransition];
         } else {
           [self.interactionController cancelInteractiveTransition];
