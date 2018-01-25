@@ -11,7 +11,6 @@
 
 @interface UINavigationBar ()
 
-@property (nonatomic, strong) UIView *stm_barTintBackgroundView;
 @property (nonatomic, strong) UIView *stm_barBackgroundView;
 
 @end
@@ -59,7 +58,6 @@
   UIView *barTintBackgroundView = objc_getAssociatedObject(self, _cmd);
   if (!barTintBackgroundView) {
     barTintBackgroundView = [[UIView alloc] initWithFrame:self.stm_barBackgroundView.frame];
-    barTintBackgroundView.backgroundColor = [UIColor redColor];
     self.stm_barTintBackgroundView = barTintBackgroundView;
   }
   return barTintBackgroundView;

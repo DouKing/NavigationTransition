@@ -30,11 +30,18 @@
   btn.center = self.view.center;
 }
 
-- (BOOL)stm_prefersNavigationBarHidden {
+//- (BOOL)stm_prefersNavigationBarHidden {
+//  if (self.navigationController.viewControllers.count % 2) {
+//    return YES;
+//  }
+//  return NO;
+//}
+
+- (UIColor *)stm_barTintColor {
   if (self.navigationController.viewControllers.count % 2) {
-    return YES;
+    return [UIColor blueColor];
   }
-  return NO;
+  return [UIColor greenColor];
 }
 
 - (void)_pushAction {

@@ -91,7 +91,7 @@ static NSInteger const kSTMSnapshotViewTag = 19999;
     }
   }
   if (cachedView) {
-    fromViewController.navigationController.navigationBarHidden = YES;
+    fromViewController.navigationController.navigationBarHidden = fromViewController.stm_prefersNavigationBarHidden;
     toViewController.tabBarController.tabBar.alpha = 0;
     UIView *tabBar = nil;
     if (fromViewController.tabBarController.tabBar && !fromViewController.hidesBottomBarWhenPushed) {

@@ -8,6 +8,8 @@
 
 #import "UIViewController+STMTransition.h"
 #import <StromFacilitate/STMObjectRuntime.h>
+#import "UINavigationItem+STMTransition.h"
+#import "UINavigationBar+STMTransition.h"
 
 @implementation UIViewController (STMTransition)
 
@@ -21,17 +23,43 @@
     originalSel = @selector(viewDidAppear:);
     swizzledSel = @selector(stm_viewDidAppear:);
     STMSwizzMethod(self, originalSel, swizzledSel);
+
+    originalSel = @selector(viewWillDisappear:);
+    swizzledSel = @selector(stm_viewWillDisappear:);
+    STMSwizzMethod(self, originalSel, swizzledSel);
+
+    originalSel = @selector(viewDidDisappear:);
+    swizzledSel = @selector(stm_viewDidDisappear:);
+    STMSwizzMethod(self, originalSel, swizzledSel);
   });
 }
 
 - (void)stm_viewWillAppear:(BOOL)animated {
   [self stm_viewWillAppear:animated];
   [self.navigationController setNavigationBarHidden:self.stm_prefersNavigationBarHidden animated:animated];
+  if (self.stm_barTintColor) {
+    [self.navigationController.navigationBar.stm_barTintBackgroundView addSubview:self.navigationItem.stm_barTintView];
+    [self.transitionCoordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+      self.navigationItem.stm_barTintView.backgroundColor = self.stm_barTintColor;
+    } completion:nil];
+  }
 }
 
 - (void)stm_viewDidAppear:(BOOL)animated {
   [self stm_viewDidAppear:animated];
   self.navigationController.navigationBarHidden = self.stm_prefersNavigationBarHidden;
+}
+
+- (void)stm_viewWillDisappear:(BOOL)animated {
+  [self stm_viewWillDisappear:animated];
+  [self.transitionCoordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+    self.navigationItem.stm_barTintView.backgroundColor = [UIColor clearColor];
+  } completion:nil];
+}
+
+- (void)stm_viewDidDisappear:(BOOL)animated {
+  [self stm_viewWillDisappear:animated];
+  [self.navigationItem.stm_barTintView removeFromSuperview];
 }
 
 - (STMNavigationTransitionStyle)navigationTransitionStyle {
@@ -91,6 +119,14 @@
 
 - (NSInteger)navigationTransitionStyleAdapter {
   return [objc_getAssociatedObject(self, _cmd) integerValue];
+}
+
+- (void)setStm_barTintColor:(UIColor *)stm_barTintColor {
+  objc_setAssociatedObject(self, @selector(stm_barTintColor), stm_barTintColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (UIColor *)stm_barTintColor {
+  return objc_getAssociatedObject(self, _cmd);
 }
 
 @end
