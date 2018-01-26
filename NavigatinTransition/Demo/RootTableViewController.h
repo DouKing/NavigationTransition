@@ -10,4 +10,6 @@
 
 @interface RootTableViewController : UITableViewController
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
 @end
