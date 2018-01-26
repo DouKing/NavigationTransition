@@ -132,6 +132,14 @@
   return popGestureDelegate;
 }
 
+- (void)setCurrentTransitionStyle:(STMNavigationTransitionStyle)currentTransitionStyle {
+  objc_setAssociatedObject(self, @selector(currentTransitionStyle), @(currentTransitionStyle), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (STMNavigationTransitionStyle)currentTransitionStyle {
+  return [objc_getAssociatedObject(self, _cmd) integerValue];
+}
+
 @end
 
 #pragma mark -
@@ -246,6 +254,7 @@
   if (STMNavigationTransitionStyleNone == transitionStyle) {
     transitionStyle = self.navigationController.navigationTransitionStyle;
   }
+  self.navigationController.currentTransitionStyle = transitionStyle;
   STMNavigationBaseTransitionAnimator *animator = [self _animatorForTransitionStyle:transitionStyle];
   animator.operation = operation;
   [self _useSystemAnimatorOrNot:animator == nil];

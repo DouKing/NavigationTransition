@@ -10,6 +10,7 @@
 #import <StromFacilitate/STMObjectRuntime.h>
 #import "UINavigationItem+STMTransition.h"
 #import "UINavigationBar+STMTransition.h"
+#import "UINavigationController+STMTransition.h"
 
 @implementation UIViewController (STMTransition)
 
@@ -36,30 +37,46 @@
 
 - (void)stm_viewWillAppear:(BOOL)animated {
   [self stm_viewWillAppear:animated];
-  [self.navigationController setNavigationBarHidden:self.stm_prefersNavigationBarHidden animated:animated];
-  if (self.stm_barTintColor) {
-    [self.navigationController.navigationBar.stm_barTintBackgroundView addSubview:self.navigationItem.stm_barTintView];
-    [self.transitionCoordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
-      self.navigationItem.stm_barTintView.backgroundColor = self.stm_barTintColor;
-    } completion:nil];
+
+  if ([self _autoChangeNavigationBar]) {
+    [self.navigationController setNavigationBarHidden:self.stm_prefersNavigationBarHidden animated:animated];
+    if (self.stm_barTintColor) {
+      [self.navigationController.navigationBar.stm_barTintBackgroundView addSubview:self.navigationItem.stm_barTintView];
+      [self.transitionCoordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+        self.navigationItem.stm_barTintView.backgroundColor = self.stm_barTintColor;
+      } completion:nil];
+    }
   }
 }
 
 - (void)stm_viewDidAppear:(BOOL)animated {
   [self stm_viewDidAppear:animated];
-  self.navigationController.navigationBarHidden = self.stm_prefersNavigationBarHidden;
+
+  if ([self _autoChangeNavigationBar]) {
+    self.navigationController.navigationBarHidden = self.stm_prefersNavigationBarHidden;
+  }
 }
 
 - (void)stm_viewWillDisappear:(BOOL)animated {
   [self stm_viewWillDisappear:animated];
-  [self.transitionCoordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
-    self.navigationItem.stm_barTintView.backgroundColor = [UIColor clearColor];
-  } completion:nil];
+
+  if ([self _autoChangeNavigationBar]) {
+    [self.transitionCoordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+      self.navigationItem.stm_barTintView.backgroundColor = [UIColor clearColor];
+    } completion:nil];
+  }
 }
 
 - (void)stm_viewDidDisappear:(BOOL)animated {
   [self stm_viewWillDisappear:animated];
-  [self.navigationItem.stm_barTintView removeFromSuperview];
+  
+  if ([self _autoChangeNavigationBar]) {
+    [self.navigationItem.stm_barTintView removeFromSuperview];
+  }
+}
+
+- (BOOL)_autoChangeNavigationBar {
+  return (STMNavigationTransitionStyleSystem == self.navigationController.currentTransitionStyle);
 }
 
 - (STMNavigationTransitionStyle)navigationTransitionStyle {

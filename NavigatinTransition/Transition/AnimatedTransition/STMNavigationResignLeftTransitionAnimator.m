@@ -9,6 +9,8 @@
 #import "STMNavigationResignLeftTransitionAnimator.h"
 #import "STMTransitionSnapshot.h"
 #import "UIViewController+STMTransition.h"
+#import "UINavigationItem+STMTransition.h"
+#import "UINavigationBar+STMTransition.h"
 
 static NSInteger const kSTMSnapshotViewTag = 19999;
 
@@ -53,7 +55,12 @@ static NSInteger const kSTMSnapshotViewTag = 19999;
   } else {
     fromViewController.tabBarController.tabBar.transform = CGAffineTransformMakeTranslation(containerView.bounds.size.width, 0);
   }
-  [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
+
+  [toViewController.navigationController setNavigationBarHidden:toViewController.stm_prefersNavigationBarHidden animated:YES];
+  [toViewController.navigationController.navigationBar.stm_barTintBackgroundView addSubview:toViewController.navigationItem.stm_barTintView];
+  toViewController.navigationItem.stm_barTintView.backgroundColor = toViewController.stm_barTintColor;
+
+  [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
     toViewController.view.transform = CGAffineTransformIdentity;
     toViewController.navigationController.navigationBar.transform = CGAffineTransformIdentity;
     if (!toViewController.hidesBottomBarWhenPushed) {
@@ -91,6 +98,11 @@ static NSInteger const kSTMSnapshotViewTag = 19999;
     }
   }
   if (cachedView) {
+    UINavigationBar *navBar = fromViewController.navigationController.navigationBar;
+    UIView *snapNavBar = [self snapViewFromView:navBar];
+    snapNavBar.frame = navBar.bounds;
+    [navBar addSubview:snapNavBar];
+
     fromViewController.navigationController.navigationBarHidden = fromViewController.stm_prefersNavigationBarHidden;
     toViewController.tabBarController.tabBar.alpha = 0;
     UIView *tabBar = nil;
@@ -101,11 +113,12 @@ static NSInteger const kSTMSnapshotViewTag = 19999;
     }
     [containerView addSubview:cachedView];
     [containerView addSubview:fromViewController.view];
-    [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
+    [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
       fromViewController.view.transform = CGAffineTransformMakeTranslation(containerView.bounds.size.width, 0);
       fromViewController.navigationController.navigationBar.transform = CGAffineTransformMakeTranslation(containerView.bounds.size.width, 0);
       [cachedView viewWithTag:kSTMSnapshotViewTag].transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
+      [snapNavBar removeFromSuperview];
       toViewController.navigationController.navigationBar.transform = CGAffineTransformIdentity;
       toViewController.tabBarController.tabBar.alpha = 1;
       [cachedView removeFromSuperview];
@@ -115,6 +128,12 @@ static NSInteger const kSTMSnapshotViewTag = 19999;
       }
       [containerView addSubview:toViewController.view];
       BOOL complete = ![transitionContext transitionWasCancelled];
+      if (complete) {
+        toViewController.navigationController.navigationBarHidden = toViewController.stm_prefersNavigationBarHidden;
+        [fromViewController.navigationItem.stm_barTintView removeFromSuperview];
+      } else {
+        fromViewController.navigationController.navigationBarHidden = fromViewController.stm_prefersNavigationBarHidden;
+      }
       [transitionContext completeTransition:complete];
     }];
   } else {
