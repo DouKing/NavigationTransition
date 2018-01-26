@@ -9,6 +9,7 @@
 #import "UINavigationController+STMTransition.h"
 #import "STMObjectRuntime.h"
 #import "STMNavigationResignLeftTransitionAnimator.h"
+#import "STMNavigationResignBottomTransitionAnimator.h"
 
 @interface STMPopGestureRecognizerDelegate : NSObject <UIGestureRecognizerDelegate>
 
@@ -23,6 +24,7 @@
 
 @property (nonatomic, strong) STMNavigationBaseTransitionAnimator *baseTransitionAnimator;
 @property (nonatomic, strong) STMNavigationResignLeftTransitionAnimator *resignLeftTransitionAnimator;
+@property (nonatomic, strong) STMNavigationResignBottomTransitionAnimator *resignBottomTransitionAnimator;
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition *interactionController;
 @property (nonatomic, assign) BOOL interacting;
 
@@ -132,6 +134,14 @@
   return popGestureDelegate;
 }
 
+- (void)setCurrentTransitionStyle:(STMNavigationTransitionStyle)currentTransitionStyle {
+  objc_setAssociatedObject(self, @selector(currentTransitionStyle), @(currentTransitionStyle), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (STMNavigationTransitionStyle)currentTransitionStyle {
+  return [objc_getAssociatedObject(self, _cmd) integerValue];
+}
+
 @end
 
 #pragma mark -
@@ -202,6 +212,10 @@
       return self.resignLeftTransitionAnimator;
       break;
     }
+    case STMNavigationTransitionStyleResignBottom: {
+      return self.resignBottomTransitionAnimator;
+      break;
+    }
     case STMNavigationTransitionStyleNone: {
       return self.baseTransitionAnimator;
       break;
@@ -247,6 +261,7 @@
   if (STMNavigationTransitionStyleNone == transitionStyle) {
     transitionStyle = self.navigationController.navigationTransitionStyle;
   }
+  self.navigationController.currentTransitionStyle = transitionStyle;
   STMNavigationBaseTransitionAnimator *animator = [self _animatorForTransitionStyle:transitionStyle];
   animator.operation = operation;
   [self _useSystemAnimatorOrNot:animator == nil];
@@ -267,6 +282,13 @@
     _resignLeftTransitionAnimator = [[STMNavigationResignLeftTransitionAnimator alloc] init];
   }
   return _resignLeftTransitionAnimator;
+}
+
+- (STMNavigationResignBottomTransitionAnimator *)resignBottomTransitionAnimator {
+  if (!_resignBottomTransitionAnimator) {
+    _resignBottomTransitionAnimator = [[STMNavigationResignBottomTransitionAnimator alloc] init];
+  }
+  return _resignBottomTransitionAnimator;
 }
 
 - (STMNavigationBaseTransitionAnimator *)baseTransitionAnimator {

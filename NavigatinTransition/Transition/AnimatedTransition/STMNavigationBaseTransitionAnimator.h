@@ -16,4 +16,6 @@
 - (void)pushAnimateTransition:(id<UIViewControllerContextTransitioning>)transitionContext;
 - (void)popAnimateTransition:(id<UIViewControllerContextTransitioning>)transitionContext;
 
+- (UIView *)snapViewFromView:(UIView *)originalView;
+
 @end

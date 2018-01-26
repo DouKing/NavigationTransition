@@ -12,6 +12,7 @@
 typedef NS_ENUM(NSInteger, STMNavigationTransitionStyle) {
   STMNavigationTransitionStyleSystem,
   STMNavigationTransitionStyleResignLeft,
+  STMNavigationTransitionStyleResignBottom,
   STMNavigationTransitionStyleNone = NSIntegerMax //only used by UIViewController
 };
 
