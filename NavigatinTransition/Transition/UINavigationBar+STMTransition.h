@@ -10,6 +10,4 @@
 
 @interface UINavigationBar (STMTransition)
 
-@property (nonatomic, strong) UIView *stm_barTintBackgroundView;
-
 @end

@@ -9,6 +9,7 @@
 #import "UINavigationController+STMTransition.h"
 #import "STMObjectRuntime.h"
 #import "STMNavigationResignLeftTransitionAnimator.h"
+#import "STMNavigationResignBottomTransitionAnimator.h"
 
 @interface STMPopGestureRecognizerDelegate : NSObject <UIGestureRecognizerDelegate>
 
@@ -23,6 +24,7 @@
 
 @property (nonatomic, strong) STMNavigationBaseTransitionAnimator *baseTransitionAnimator;
 @property (nonatomic, strong) STMNavigationResignLeftTransitionAnimator *resignLeftTransitionAnimator;
+@property (nonatomic, strong) STMNavigationResignBottomTransitionAnimator *resignBottomTransitionAnimator;
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition *interactionController;
 @property (nonatomic, assign) BOOL interacting;
 
@@ -209,6 +211,10 @@
       return self.resignLeftTransitionAnimator;
       break;
     }
+    case STMNavigationTransitionStyleResignBottom: {
+      return self.resignBottomTransitionAnimator;
+      break;
+    }
     case STMNavigationTransitionStyleNone: {
       return self.baseTransitionAnimator;
       break;
@@ -275,6 +281,13 @@
     _resignLeftTransitionAnimator = [[STMNavigationResignLeftTransitionAnimator alloc] init];
   }
   return _resignLeftTransitionAnimator;
+}
+
+- (STMNavigationResignBottomTransitionAnimator *)resignBottomTransitionAnimator {
+  if (!_resignBottomTransitionAnimator) {
+    _resignBottomTransitionAnimator = [[STMNavigationResignBottomTransitionAnimator alloc] init];
+  }
+  return _resignBottomTransitionAnimator;
 }
 
 - (STMNavigationBaseTransitionAnimator *)baseTransitionAnimator {

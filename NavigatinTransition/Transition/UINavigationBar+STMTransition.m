@@ -8,10 +8,12 @@
 
 #import "UINavigationBar+STMTransition.h"
 #import <STMObjectRuntime.h>
+#import "UINavigationItem+STMTransition.h"
 
 @interface UINavigationBar ()
 
 @property (nonatomic, strong) UIView *stm_barBackgroundView;
+@property (nonatomic, strong) UIView *stm_barTintBackgroundView;
 
 @end
 
@@ -23,7 +25,26 @@
     SEL originalSel = @selector(layoutSubviews);
     SEL swizzledSel = @selector(stm_layoutSubviews);
     STMSwizzMethod(self, originalSel, swizzledSel);
+
+    originalSel = @selector(pushNavigationItem:animated:);
+    swizzledSel = @selector(stm_pushNavigationItem:animated:);
+    STMSwizzMethod(self, originalSel, swizzledSel);
+
+    originalSel = @selector(popNavigationItemAnimated:);
+    swizzledSel = @selector(stm_popNavigationItemAnimated:);
+    STMSwizzMethod(self, originalSel, swizzledSel);
   });
+}
+
+- (void)stm_pushNavigationItem:(UINavigationItem *)item animated:(BOOL)animated {
+  [self stm_pushNavigationItem:item animated:animated];
+  [self.stm_barTintBackgroundView addSubview:item.stm_barTintView];
+}
+
+- (UINavigationItem *)stm_popNavigationItemAnimated:(BOOL)animated {
+  UINavigationItem *item = [self stm_popNavigationItemAnimated:animated];
+  [item.stm_barTintView removeFromSuperview];
+  return item;
 }
 
 - (void)stm_layoutSubviews {

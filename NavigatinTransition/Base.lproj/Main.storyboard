@@ -27,7 +27,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L1T-Jq-Sad" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="974" y="-355"/>
+            <point key="canvasLocation" x="866" y="214"/>
         </scene>
         <!--Navigation transition-->
         <scene sceneID="N1S-9e-IEK">
@@ -84,6 +84,26 @@
                                             <segue destination="e0Y-Gk-onO" kind="show" id="3I3-RO-Emd"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="eoj-dL-yxI" style="IBUITableViewCellStyleDefault" id="qzc-Is-9gF">
+                                        <rect key="frame" x="0.0" y="199.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qzc-Is-9gF" id="QKF-x6-6mc">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="ResignBottom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eoj-dL-yxI">
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Kd8-hb-xWE" kind="show" id="FFk-au-0tQ"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -96,7 +116,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tjW-FJ-4qH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1665" y="-356"/>
+            <point key="canvasLocation" x="1558" y="213"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="xna-DF-dLK">
@@ -338,7 +358,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9hp-5O-vdM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="162" y="-355"/>
+            <point key="canvasLocation" x="54" y="214"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="BEp-sR-Pam">
@@ -391,7 +411,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1zf-4X-MG1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2412" y="119"/>
+            <point key="canvasLocation" x="2412" y="151"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tXt-B4-LIS">
@@ -510,6 +530,86 @@
             <point key="canvasLocation" x="3694" y="119"/>
         </scene>
         <!--View Controller-->
+        <scene sceneID="euM-QB-2mt">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="Qxd-BW-xv6" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5oc-Ic-TMJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="fqZ-PK-Yu7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="g2I-1h-oNE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZk-yk-y5D">
+                                <rect key="frame" x="87" y="311" width="200" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Bsb-di-JR5"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="eeT-oV-gRd"/>
+                                </constraints>
+                                <state key="normal" title="push"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="5sG-6Z-v8P" kind="show" id="Lsb-Ed-4Op">
+                                        <nil key="action"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.69522315263748169" alpha="0.70184075339999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mZk-yk-y5D" firstAttribute="centerX" secondItem="g2I-1h-oNE" secondAttribute="centerX" id="Aod-OC-ScO"/>
+                            <constraint firstItem="mZk-yk-y5D" firstAttribute="centerY" secondItem="g2I-1h-oNE" secondAttribute="centerY" id="KJU-pE-eqi"/>
+                        </constraints>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="stm_barTintColor">
+                            <color key="value" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="stm_prefersNavigationBarHidden" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="navigationTransitionStyleAdapter">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wgo-Sf-Lw8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3694" y="771"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="XpP-Yh-xRd">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="5sG-6Z-v8P" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5g6-d1-MZp"/>
+                        <viewControllerLayoutGuide type="bottom" id="5cn-TU-JKs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tn3-xh-ErO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.62326388888888884" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="stm_barTintColor">
+                            <color key="value" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="navigationTransitionStyleAdapter">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a28-uM-0A9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4353" y="771"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="lDh-Np-7QK">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="6nN-km-azn" customClass="ViewController" sceneMemberID="viewController">
@@ -556,6 +656,110 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pq5-5e-Kf0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4353" y="119"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="eMc-b0-OIL">
+            <objects>
+                <viewController id="Kd8-hb-xWE" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jPd-Nl-ckh"/>
+                        <viewControllerLayoutGuide type="bottom" id="6Gg-fV-trw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zMb-iy-zOQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2LZ-1j-VPL">
+                                <rect key="frame" x="87" y="311" width="200" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="HNR-qT-c3P"/>
+                                    <constraint firstAttribute="height" constant="44" id="wYq-Wn-weC"/>
+                                </constraints>
+                                <state key="normal" title="push"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="RmM-xg-2Fg" kind="show" id="NaK-ug-cNn">
+                                        <nil key="action"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2LZ-1j-VPL" firstAttribute="centerY" secondItem="zMb-iy-zOQ" secondAttribute="centerY" id="Nvw-A1-z0q"/>
+                            <constraint firstItem="2LZ-1j-VPL" firstAttribute="centerX" secondItem="zMb-iy-zOQ" secondAttribute="centerX" id="o5L-wx-P2p"/>
+                        </constraints>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="stm_barTintColor">
+                            <color key="value" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="navigationTransitionStyleAdapter">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lAc-ty-QPa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2412" y="772"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="DRi-1x-aW2">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="RmM-xg-2Fg" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qbi-3h-oRn"/>
+                        <viewControllerLayoutGuide type="bottom" id="nfg-iV-yV3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="P8F-0W-vNG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aAn-0E-yve">
+                                <rect key="frame" x="87" y="311" width="200" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="08h-Xe-01n"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="56Y-JY-gm2"/>
+                                </constraints>
+                                <state key="normal" title="push"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="Qxd-BW-xv6" kind="show" id="I7m-SC-Khc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.3911404079861111" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aAn-0E-yve" firstAttribute="centerX" secondItem="P8F-0W-vNG" secondAttribute="centerX" id="Nve-J0-kKz"/>
+                            <constraint firstItem="aAn-0E-yve" firstAttribute="centerY" secondItem="P8F-0W-vNG" secondAttribute="centerY" id="TlL-pb-NI9"/>
+                        </constraints>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="stm_barTintColor">
+                            <color key="value" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="navigationTransitionStyleAdapter">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0ck-Ry-yHR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3052" y="772"/>
         </scene>
     </scenes>
 </document>

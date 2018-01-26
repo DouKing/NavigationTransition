@@ -28,10 +28,6 @@
     originalSel = @selector(viewWillDisappear:);
     swizzledSel = @selector(stm_viewWillDisappear:);
     STMSwizzMethod(self, originalSel, swizzledSel);
-
-    originalSel = @selector(viewDidDisappear:);
-    swizzledSel = @selector(stm_viewDidDisappear:);
-    STMSwizzMethod(self, originalSel, swizzledSel);
   });
 }
 
@@ -41,7 +37,6 @@
   if ([self _autoChangeNavigationBar]) {
     [self.navigationController setNavigationBarHidden:self.stm_prefersNavigationBarHidden animated:animated];
     if (self.stm_barTintColor) {
-      [self.navigationController.navigationBar.stm_barTintBackgroundView addSubview:self.navigationItem.stm_barTintView];
       [self.transitionCoordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
         self.navigationItem.stm_barTintView.backgroundColor = self.stm_barTintColor;
       } completion:nil];
@@ -64,14 +59,6 @@
     [self.transitionCoordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
       self.navigationItem.stm_barTintView.backgroundColor = [UIColor clearColor];
     } completion:nil];
-  }
-}
-
-- (void)stm_viewDidDisappear:(BOOL)animated {
-  [self stm_viewWillDisappear:animated];
-  
-  if ([self _autoChangeNavigationBar]) {
-    [self.navigationItem.stm_barTintView removeFromSuperview];
   }
 }
 

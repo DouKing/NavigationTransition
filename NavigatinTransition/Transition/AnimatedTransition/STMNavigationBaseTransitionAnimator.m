@@ -55,4 +55,23 @@
   }];
 }
 
+
+// iOS10 上系统截图方法失效，以此替代
+- (UIView *)snapViewFromView:(UIView *)originalView {
+  @autoreleasepool {
+    UIView *snapView = [originalView snapshotViewAfterScreenUpdates:NO];
+    if (snapView) {
+      return snapView;
+    }
+
+    UIGraphicsBeginImageContext(originalView.frame.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [originalView.layer renderInContext:context];
+    UIImage *targetImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    return [[UIImageView alloc] initWithImage:targetImage];
+  }
+}
+
 @end

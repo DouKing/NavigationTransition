@@ -57,7 +57,6 @@ static NSInteger const kSTMSnapshotViewTag = 19999;
   }
 
   [toViewController.navigationController setNavigationBarHidden:toViewController.stm_prefersNavigationBarHidden animated:YES];
-  [toViewController.navigationController.navigationBar.stm_barTintBackgroundView addSubview:toViewController.navigationItem.stm_barTintView];
   toViewController.navigationItem.stm_barTintView.backgroundColor = toViewController.stm_barTintColor;
 
   [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
@@ -142,24 +141,6 @@ static NSInteger const kSTMSnapshotViewTag = 19999;
 }
 
 #pragma mark -
-
-// iOS10 上系统截图方法失效，以此替代
-- (UIView *)snapViewFromView:(UIView *)originalView {
-  @autoreleasepool {
-    UIView *snapView = [originalView snapshotViewAfterScreenUpdates:NO];
-    if (snapView) {
-      return snapView;
-    }
-
-    UIGraphicsBeginImageContext(originalView.frame.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    [originalView.layer renderInContext:context];
-    UIImage *targetImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-
-    return [[UIImageView alloc] initWithImage:targetImage];
-  }
-}
 
 - (NSMutableArray<STMTransitionSnapshot *> *)cachedSnapShotViews {
   if (!_cachedSnapShotViews) {
