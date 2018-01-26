@@ -7,23 +7,11 @@
 //
 
 #import "RootTableViewController.h"
-#import "UIViewController+STMTransition.h"
 
 @interface RootTableViewController ()
 
 @end
 
 @implementation RootTableViewController
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-  UIViewController *vc = segue.destinationViewController;
-  UITableViewCell *cell = sender;
-  NSString *animationName = cell.textLabel.text;
-  if ([animationName isEqualToString:@"System"]) {
-    vc.navigationTransitionStyle = STMNavigationTransitionStyleSystem;
-  } else if ([animationName isEqualToString:@"ResignLeft"]) {
-    vc.navigationTransitionStyle = STMNavigationTransitionStyleResignLeft;
-  }
-}
 
 @end
