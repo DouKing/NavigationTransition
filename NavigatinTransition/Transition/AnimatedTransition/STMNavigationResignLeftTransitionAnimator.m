@@ -98,6 +98,11 @@ static NSInteger const kSTMSnapshotViewTag = 19999;
   }
   if (cachedView) {
     UINavigationBar *navBar = fromViewController.navigationController.navigationBar;
+    UIView *navBarBgView = [fromViewController.navigationController.navigationBar
+                            valueForKey:@"stm_barTintBackgroundView"];
+    UIView *snapBarBgView = [self snapViewFromView:navBarBgView];
+    snapBarBgView.frame = navBarBgView.frame;
+    [navBar addSubview:snapBarBgView];
     UIView *snapNavBar = [self snapViewFromView:navBar];
     snapNavBar.frame = navBar.bounds;
     [navBar addSubview:snapNavBar];
@@ -117,6 +122,7 @@ static NSInteger const kSTMSnapshotViewTag = 19999;
       fromViewController.navigationController.navigationBar.transform = CGAffineTransformMakeTranslation(containerView.bounds.size.width, 0);
       [cachedView viewWithTag:kSTMSnapshotViewTag].transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
+      [snapBarBgView removeFromSuperview];
       [snapNavBar removeFromSuperview];
       toViewController.navigationController.navigationBar.transform = CGAffineTransformIdentity;
       toViewController.tabBarController.tabBar.alpha = 1;
