@@ -7,7 +7,6 @@
 #import "STMNavigationResignBottomTransitionAnimator.h"
 #import "UIViewController+STMTransition.h"
 #import "UINavigationItem+STMTransition.h"
-#import "UINavigationBar+STMTransition.h"
 
 #define _NAVIGATIONBAR_HEIGHT_ (CGRectGetHeight([[UIApplication sharedApplication] statusBarFrame]) + 44)
 

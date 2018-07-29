@@ -9,7 +9,6 @@
 #import "UIViewController+STMTransition.h"
 #import <StromFacilitate/STMObjectRuntime.h>
 #import "UINavigationItem+STMTransition.h"
-#import "UINavigationBar+STMTransition.h"
 #import "UINavigationController+STMTransition.h"
 
 @implementation UIViewController (STMTransition)

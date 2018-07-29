@@ -10,7 +10,7 @@
 #import "STMTransitionSnapshot.h"
 #import "UIViewController+STMTransition.h"
 #import "UINavigationItem+STMTransition.h"
-#import "UINavigationBar+STMTransition.h"
+#import "STMNavigationBar.h"
 
 static NSInteger const kSTMSnapshotViewTag = 19999;
 
@@ -98,14 +98,17 @@ static NSInteger const kSTMSnapshotViewTag = 19999;
   }
   if (cachedView) {
     UINavigationBar *navBar = fromViewController.navigationController.navigationBar;
-    UIView *navBarBgView = [fromViewController.navigationController.navigationBar
-                            valueForKey:@"stm_barTintBackgroundView"];
-    UIView *snapBarBgView = [self snapViewFromView:navBarBgView];
-    snapBarBgView.frame = navBarBgView.frame;
-    [navBar addSubview:snapBarBgView];
-    UIView *snapNavBar = [self snapViewFromView:navBar];
-    snapNavBar.frame = navBar.bounds;
-    [navBar addSubview:snapNavBar];
+    UIView *snapBarBgView = nil;
+    UIView *snapNavBar = nil;
+    if ([navBar isKindOfClass:STMNavigationBar.class]) {
+      UIView *navBarBgView = [navBar valueForKey:@"barTintBackgroundView"];
+      snapBarBgView = [self snapViewFromView:navBarBgView];
+      snapBarBgView.frame = navBarBgView.frame;
+      [navBar addSubview:snapBarBgView];
+      snapNavBar = [self snapViewFromView:navBar];
+      snapNavBar.frame = navBar.bounds;
+      [navBar addSubview:snapNavBar];
+    }
 
     fromViewController.navigationController.navigationBarHidden = fromViewController.stm_prefersNavigationBarHidden;
     toViewController.tabBarController.tabBar.alpha = 0;
