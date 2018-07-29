@@ -1,6 +1,6 @@
 
 target 'NavigatinTransition' do
 
-pod 'StromFacilitate'
+pod 'StromFacilitate', '~> 1.1.2'
 
 end
