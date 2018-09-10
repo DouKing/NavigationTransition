@@ -12,6 +12,7 @@
 		005FA22B201B26AA0053BA34 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 005FA225201B26AA0053BA34 /* ViewController.m */; };
 		005FA22C201B26AA0053BA34 /* RootTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 005FA227201B26AA0053BA34 /* RootTableViewController.m */; };
 		005FA22D201B26AA0053BA34 /* CustomTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 005FA229201B26AA0053BA34 /* CustomTransition.m */; };
+		00945E962146879300B0DC89 /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00945E952146879300B0DC89 /* DemoViewController.m */; };
 		B8155B5D210DC49600FD0739 /* STMNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B8155B5C210DC49600FD0739 /* STMNavigationBar.m */; };
 		B85B28202003ABFF00C62EFD /* UINavigationItem+STMTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = B85B281F2003ABFF00C62EFD /* UINavigationItem+STMTransition.m */; };
 		B88119751D53163500238644 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B88119741D53163500238644 /* main.m */; };
@@ -37,6 +38,8 @@
 		005FA228201B26AA0053BA34 /* CustomTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTransition.h; sourceTree = "<group>"; };
 		005FA229201B26AA0053BA34 /* CustomTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTransition.m; sourceTree = "<group>"; };
 		005FA22A201B26AA0053BA34 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		00945E942146879300B0DC89 /* DemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
+		00945E952146879300B0DC89 /* DemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
 		11D72E05F3D794A750FF81BA /* Pods-NavigatinTransition.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavigatinTransition.release.xcconfig"; path = "Pods/Target Support Files/Pods-NavigatinTransition/Pods-NavigatinTransition.release.xcconfig"; sourceTree = "<group>"; };
 		2CA02E990E08950F1D4280BA /* Pods-NavigatinTransition.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavigatinTransition.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NavigatinTransition/Pods-NavigatinTransition.debug.xcconfig"; sourceTree = "<group>"; };
 		403FDC675506633C7FBDD00A /* libPods-NavigatinTransition.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NavigatinTransition.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +83,8 @@
 			children = (
 				005FA226201B26AA0053BA34 /* RootTableViewController.h */,
 				005FA227201B26AA0053BA34 /* RootTableViewController.m */,
+				00945E942146879300B0DC89 /* DemoViewController.h */,
+				00945E952146879300B0DC89 /* DemoViewController.m */,
 				005FA22A201B26AA0053BA34 /* ViewController.h */,
 				005FA225201B26AA0053BA34 /* ViewController.m */,
 				005FA228201B26AA0053BA34 /* CustomTransition.h */,
@@ -277,6 +282,7 @@
 				B88119781D53163500238644 /* AppDelegate.m in Sources */,
 				005FA22C201B26AA0053BA34 /* RootTableViewController.m in Sources */,
 				B88119981D53171000238644 /* STMNavigationResignLeftTransitionAnimator.m in Sources */,
+				00945E962146879300B0DC89 /* DemoViewController.m in Sources */,
 				B881199B1D53171000238644 /* UIViewController+STMTransition.m in Sources */,
 				005FA22B201B26AA0053BA34 /* ViewController.m in Sources */,
 				005FA21D201AFAF90053BA34 /* STMNavigationResignBottomTransitionAnimator.m in Sources */,
