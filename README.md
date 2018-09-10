@@ -12,12 +12,44 @@ Some categories that can be used to customize your navigation transition.
 Add the followwing line to your Podfile:
 
 ```
-pod 'NavigationTransition', '~> 1.0.0'
+pod 'NavigationTransition'
 ```
 
 ## Usage
 
-Download the project and see the demo.
+Set the navigationTransitionStyle property for UINavigationController to customize the transition for all view controllers in the navigation.
+
+```
+DemoViewController *vc = [[DemoViewController alloc] init];
+UINavigationController *nav = [[UINavigationController alloc] initWithNavigationBarClass:STMNavigationBar.class toolbarClass:nil];
+nav.viewControllers = @[vc];
+nav.navigationTransitionStyle = STMNavigationTransitionStyleSystem;
+[self presentViewController:nav animated:YES completion:nil];
+
+```
+
+You can also set the navigationTransitionStyle property for a single UIViewController to customize the only one vc.
+
+```
+DemoViewController *vc = [[DemoViewController alloc] init];
+if (self.navigationController.viewControllers.count == 3) {
+	vc.navigationTransitionStyle = STMNavigationTransitionStyleResignLeft;
+}
+[self.navigationController pushViewController:vc animated:YES];
+```
+
+And you can customize a transition use yourself Class.
+
+```
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
+  CustomTransition *transition = [[CustomTransition alloc] init];
+  transition.operation = operation;
+  return transition;
+}
+```
+
+
+Download the project and see the detail.
 
 ## Blog
 
