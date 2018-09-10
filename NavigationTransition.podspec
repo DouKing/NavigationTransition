@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NavigationTransition'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'Deal with navigation transition and custom navigation bar.'
 
   s.homepage         = 'https://github.com/DouKing/NavigationTransition'
@@ -28,6 +28,6 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  s.dependency 'StromFacilitate', '~> 1.1.2'
+  s.dependency 'StromFacilitate/Utilities', '~> 1.1.2'
 
 end
