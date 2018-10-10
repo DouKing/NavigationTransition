@@ -12,7 +12,11 @@
 IB_DESIGNABLE
 @interface UIViewController (STMTransition)
 
+#if TARGET_INTERFACE_BUILDER
+@property (nonatomic, assign) IBInspectable NSInteger navigationTransitionStyle;
+#else
 @property (nonatomic, assign) STMNavigationTransitionStyle navigationTransitionStyle;
+#endif
 
 @property (nonatomic, assign) IBInspectable BOOL stm_interactivePopDisabled;
 
@@ -20,8 +24,8 @@ IB_DESIGNABLE
 
 @property (nonatomic, assign) IBInspectable BOOL stm_prefersNavigationBarHidden;
 
-// adapter for `navigationTransitionStyle`, when you want to use `navigationTransitionStyle` in IB, use this.
-@property (nonatomic, assign) IBInspectable NSInteger navigationTransitionStyleAdapter;
+//// adapter for `navigationTransitionStyle`, when you want to use `navigationTransitionStyle` in IB, use this.
+//@property (nonatomic, assign) IBInspectable NSInteger navigationTransitionStyleAdapter;
 
 @property (nonatomic, strong) IBInspectable UIColor *stm_barTintColor;
 

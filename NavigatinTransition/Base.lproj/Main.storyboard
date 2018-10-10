@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rQr-tm-VKI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rQr-tm-VKI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -446,6 +445,9 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="navigationTransitionStyleAdapter">
                             <integer key="value" value="1"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="navigationTransitionStyle">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1zf-4X-MG1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -506,6 +508,9 @@
                             <integer key="value" value="1"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="stm_interactivePopDisabled" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="navigationTransitionStyle">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tjV-cW-aR1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -556,6 +561,9 @@
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="stm_prefersNavigationBarHidden" value="YES"/>
                         <userDefinedRuntimeAttribute type="number" keyPath="navigationTransitionStyleAdapter">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="navigationTransitionStyle">
                             <integer key="value" value="1"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
@@ -610,6 +618,9 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="navigationTransitionStyleAdapter">
                             <integer key="value" value="2"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="navigationTransitionStyle">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wgo-Sf-Lw8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -634,6 +645,9 @@
                             <color key="value" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="navigationTransitionStyleAdapter">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="navigationTransitionStyle">
                             <integer key="value" value="2"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
@@ -682,6 +696,9 @@
                             <color key="value" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="navigationTransitionStyleAdapter">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="navigationTransitionStyle">
                             <integer key="value" value="1"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
@@ -733,6 +750,9 @@
                             <color key="value" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="navigationTransitionStyleAdapter">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="navigationTransitionStyle">
                             <integer key="value" value="2"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
@@ -818,6 +838,9 @@
                             <color key="value" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="navigationTransitionStyleAdapter">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="navigationTransitionStyle">
                             <integer key="value" value="2"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
