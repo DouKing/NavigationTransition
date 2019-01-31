@@ -7,7 +7,7 @@
 //
 
 #import "UINavigationController+STMTransition.h"
-#import "STMObjectRuntime.h"
+#import "_STMNavigationTransitionDefines.h"
 #import "STMNavigationResignLeftTransitionAnimator.h"
 #import "STMNavigationResignBottomTransitionAnimator.h"
 
@@ -54,7 +54,7 @@
     for (NSInteger i = 0; i < [originalSelectors count]; ++i) {
       SEL originalSel = NSSelectorFromString(originalSelectors[i]);
       SEL swizzledSel = NSSelectorFromString(swizzledSelectors[i]);
-      STMSwizzMethod(class, originalSel, swizzledSel);
+      STMNavigationTransitionSwizzMethod(class, originalSel, swizzledSel);
     }
   });
 }

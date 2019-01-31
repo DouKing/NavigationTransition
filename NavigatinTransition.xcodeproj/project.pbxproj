@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		000614BE1E127F9A008C031A /* UINavigationController+STMTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 000614BD1E127F9A008C031A /* UINavigationController+STMTransition.m */; };
+		003F80BF2202F628006169DA /* _STMNavigationTransitionDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = 003F80BE2202F628006169DA /* _STMNavigationTransitionDefines.m */; };
 		005FA21D201AFAF90053BA34 /* STMNavigationResignBottomTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 005FA21C201AFAF90053BA34 /* STMNavigationResignBottomTransitionAnimator.m */; };
 		005FA22B201B26AA0053BA34 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 005FA225201B26AA0053BA34 /* ViewController.m */; };
 		005FA22C201B26AA0053BA34 /* RootTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 005FA227201B26AA0053BA34 /* RootTableViewController.m */; };
@@ -24,12 +25,13 @@
 		B88119981D53171000238644 /* STMNavigationResignLeftTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B881198F1D53171000238644 /* STMNavigationResignLeftTransitionAnimator.m */; };
 		B88119991D53171000238644 /* STMTransitionSnapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = B88119911D53171000238644 /* STMTransitionSnapshot.m */; };
 		B881199B1D53171000238644 /* UIViewController+STMTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = B88119961D53171000238644 /* UIViewController+STMTransition.m */; };
-		B9353B161E87F71070CA79BC /* libPods-NavigatinTransition.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 403FDC675506633C7FBDD00A /* libPods-NavigatinTransition.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		000614BC1E127F9A008C031A /* UINavigationController+STMTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+STMTransition.h"; sourceTree = "<group>"; };
 		000614BD1E127F9A008C031A /* UINavigationController+STMTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+STMTransition.m"; sourceTree = "<group>"; };
+		003F80BD2202F628006169DA /* _STMNavigationTransitionDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _STMNavigationTransitionDefines.h; sourceTree = "<group>"; };
+		003F80BE2202F628006169DA /* _STMNavigationTransitionDefines.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _STMNavigationTransitionDefines.m; sourceTree = "<group>"; };
 		005FA21B201AFAF90053BA34 /* STMNavigationResignBottomTransitionAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STMNavigationResignBottomTransitionAnimator.h; sourceTree = "<group>"; };
 		005FA21C201AFAF90053BA34 /* STMNavigationResignBottomTransitionAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STMNavigationResignBottomTransitionAnimator.m; sourceTree = "<group>"; };
 		005FA225201B26AA0053BA34 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
@@ -40,9 +42,6 @@
 		005FA22A201B26AA0053BA34 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		00945E942146879300B0DC89 /* DemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
 		00945E952146879300B0DC89 /* DemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
-		11D72E05F3D794A750FF81BA /* Pods-NavigatinTransition.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavigatinTransition.release.xcconfig"; path = "Pods/Target Support Files/Pods-NavigatinTransition/Pods-NavigatinTransition.release.xcconfig"; sourceTree = "<group>"; };
-		2CA02E990E08950F1D4280BA /* Pods-NavigatinTransition.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavigatinTransition.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NavigatinTransition/Pods-NavigatinTransition.debug.xcconfig"; sourceTree = "<group>"; };
-		403FDC675506633C7FBDD00A /* libPods-NavigatinTransition.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NavigatinTransition.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8155B5B210DC49600FD0739 /* STMNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STMNavigationBar.h; sourceTree = "<group>"; };
 		B8155B5C210DC49600FD0739 /* STMNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STMNavigationBar.m; sourceTree = "<group>"; };
 		B85B281E2003ABFF00C62EFD /* UINavigationItem+STMTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+STMTransition.h"; sourceTree = "<group>"; };
@@ -71,7 +70,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9353B161E87F71070CA79BC /* libPods-NavigatinTransition.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,7 +94,6 @@
 		786B8D0058E9F136D6F2A8C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				403FDC675506633C7FBDD00A /* libPods-NavigatinTransition.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -106,7 +103,6 @@
 			children = (
 				B88119721D53163500238644 /* NavigatinTransition */,
 				B88119711D53163500238644 /* Products */,
-				F549BC878177F72D83B3A542 /* Pods */,
 				786B8D0058E9F136D6F2A8C2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -156,6 +152,8 @@
 				B85B281F2003ABFF00C62EFD /* UINavigationItem+STMTransition.m */,
 				B8155B5B210DC49600FD0739 /* STMNavigationBar.h */,
 				B8155B5C210DC49600FD0739 /* STMNavigationBar.m */,
+				003F80BD2202F628006169DA /* _STMNavigationTransitionDefines.h */,
+				003F80BE2202F628006169DA /* _STMNavigationTransitionDefines.m */,
 			);
 			path = Transition;
 			sourceTree = "<group>";
@@ -175,15 +173,6 @@
 			path = AnimatedTransition;
 			sourceTree = "<group>";
 		};
-		F549BC878177F72D83B3A542 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				2CA02E990E08950F1D4280BA /* Pods-NavigatinTransition.debug.xcconfig */,
-				11D72E05F3D794A750FF81BA /* Pods-NavigatinTransition.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -191,7 +180,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B88119871D53163500238644 /* Build configuration list for PBXNativeTarget "NavigatinTransition" */;
 			buildPhases = (
-				4DB28E25BB69778B53F745FE /* [CP] Check Pods Manifest.lock */,
 				B881196C1D53163500238644 /* Sources */,
 				B881196D1D53163500238644 /* Frameworks */,
 				B881196E1D53163500238644 /* Resources */,
@@ -251,27 +239,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		4DB28E25BB69778B53F745FE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-NavigatinTransition-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		B881196C1D53163500238644 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -285,6 +252,7 @@
 				00945E962146879300B0DC89 /* DemoViewController.m in Sources */,
 				B881199B1D53171000238644 /* UIViewController+STMTransition.m in Sources */,
 				005FA22B201B26AA0053BA34 /* ViewController.m in Sources */,
+				003F80BF2202F628006169DA /* _STMNavigationTransitionDefines.m in Sources */,
 				005FA21D201AFAF90053BA34 /* STMNavigationResignBottomTransitionAnimator.m in Sources */,
 				B8155B5D210DC49600FD0739 /* STMNavigationBar.m in Sources */,
 				B88119991D53171000238644 /* STMTransitionSnapshot.m in Sources */,
@@ -406,7 +374,6 @@
 		};
 		B88119881D53163500238644 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2CA02E990E08950F1D4280BA /* Pods-NavigatinTransition.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = K2VBE95LX6;
@@ -420,7 +387,6 @@
 		};
 		B88119891D53163500238644 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 11D72E05F3D794A750FF81BA /* Pods-NavigatinTransition.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = K2VBE95LX6;

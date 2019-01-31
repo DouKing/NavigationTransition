@@ -7,7 +7,7 @@
 //
 
 #import "UIViewController+STMTransition.h"
-#import <StromFacilitate/STMObjectRuntime.h>
+#import "_STMNavigationTransitionDefines.h"
 #import "UINavigationItem+STMTransition.h"
 #import "UINavigationController+STMTransition.h"
 
@@ -18,15 +18,15 @@
   dispatch_once(&onceToken, ^{
     SEL originalSel = @selector(viewWillAppear:);
     SEL swizzledSel = @selector(stm_viewWillAppear:);
-    STMSwizzMethod(self, originalSel, swizzledSel);
+    STMNavigationTransitionSwizzMethod(self, originalSel, swizzledSel);
 
     originalSel = @selector(viewDidAppear:);
     swizzledSel = @selector(stm_viewDidAppear:);
-    STMSwizzMethod(self, originalSel, swizzledSel);
+    STMNavigationTransitionSwizzMethod(self, originalSel, swizzledSel);
 
     originalSel = @selector(viewWillDisappear:);
     swizzledSel = @selector(stm_viewWillDisappear:);
-    STMSwizzMethod(self, originalSel, swizzledSel);
+    STMNavigationTransitionSwizzMethod(self, originalSel, swizzledSel);
   });
 }
 
