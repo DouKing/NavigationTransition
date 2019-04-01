@@ -1,3 +1,6 @@
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
+[![LICENSE](https://img.shields.io/badge/license-NPL%20(The%20996%20Prohibited%20License)-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
+
 # NavigationTransition
 
 Some categories that can be used to customize your navigation transition.
@@ -55,3 +58,6 @@ Download the project and see the detail.
 
 https://douking.github.io/2018/01/01/navigation-transition/
 
+## License
+
+See file `LICENSE.MIT` and `LICENSE.NPL`.
