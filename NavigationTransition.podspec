@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NavigationTransition'
-  s.version          = '1.1.0'
+  s.version          = '1.1.1'
   s.summary          = 'Deal with navigation transition and custom navigation bar.'
 
   s.homepage         = 'https://github.com/DouKing/NavigationTransition'
