@@ -16,6 +16,15 @@
 
 @implementation STMNavigationBar
 
+- (void)didMoveToSuperview {
+    [super didMoveToSuperview];
+    [self.items enumerateObjectsUsingBlock:^(UINavigationItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (![self.barTintBackgroundView.subviews containsObject:obj.stm_barTintView]) {
+            [self.barTintBackgroundView addSubview:obj.stm_barTintView];
+        }
+    }];
+}
+
 - (void)pushNavigationItem:(UINavigationItem *)item animated:(BOOL)animated {
   [super pushNavigationItem:item animated:animated];
   [self.barTintBackgroundView addSubview:item.stm_barTintView];

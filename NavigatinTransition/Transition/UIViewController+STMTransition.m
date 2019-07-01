@@ -35,11 +35,10 @@
 
   if ([self _autoChangeNavigationBar]) {
     [self.navigationController setNavigationBarHidden:self.stm_prefersNavigationBarHidden animated:animated];
-    if (self.stm_barTintColor) {
-      [self.transitionCoordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
-        self.navigationItem.stm_barTintView.backgroundColor = self.stm_barTintColor;
-      } completion:nil];
-    }
+    [self.transitionCoordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+      self.navigationItem.stm_barTintView.backgroundColor = self.stm_barTintColor ?: [UIColor clearColor];
+      self.navigationItem.stm_barTintView.alpha = 1;
+    } completion:nil];
   }
 }
 
@@ -57,6 +56,7 @@
   if ([self _autoChangeNavigationBar]) {
     [self.transitionCoordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
       self.navigationItem.stm_barTintView.backgroundColor = [UIColor clearColor];
+      self.navigationItem.stm_barTintView.alpha = 0;
     } completion:nil];
   }
 }
