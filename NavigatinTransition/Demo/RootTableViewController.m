@@ -11,6 +11,7 @@
 #import "STMNavigationBar.h"
 #import "UIViewController+STMTransition.h"
 #import "CustomTransition.h"
+#import "UINavigationItem+STMTransition.h"
 
 @interface RootTableViewController ()<UINavigationControllerDelegate>
 
@@ -22,6 +23,15 @@
   [super viewDidLoad];
   UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(_handleRightBarButtonItemAction:)];
   self.navigationItem.rightBarButtonItem = rightBarButtonItem;
+
+  UIView *progressView = [[UIView alloc] init];
+  progressView.backgroundColor = [UIColor yellowColor];
+  progressView.translatesAutoresizingMaskIntoConstraints = NO;
+  [self.navigationItem.stm_barTintView addSubview:progressView];
+  [progressView.leadingAnchor constraintEqualToAnchor:progressView.superview.leadingAnchor].active = YES;
+  [progressView.trailingAnchor constraintEqualToAnchor:progressView.superview.trailingAnchor].active = YES;
+  [progressView.bottomAnchor constraintEqualToAnchor:progressView.superview.bottomAnchor].active = YES;
+  [progressView.heightAnchor constraintEqualToConstant:2].active = YES;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
