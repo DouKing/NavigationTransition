@@ -39,6 +39,9 @@
 - (void)layoutSubviews {
   [super layoutSubviews];
   self.barTintBackgroundView.frame = self.barBackgroundView.frame;
+  [self.items enumerateObjectsUsingBlock:^(UINavigationItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    obj.stm_barTintView.frame = self.barTintBackgroundView.bounds;
+  }];
   if (!self.barTintBackgroundView.superview) {
     [self.barBackgroundView.superview insertSubview:self.barTintBackgroundView
                                        aboveSubview:self.barBackgroundView];
@@ -49,7 +52,7 @@
   if (!_barBackgroundView) {
     [self.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
       if ([obj isKindOfClass:NSClassFromString(@"_UIBarBackground")]) {
-        _barBackgroundView = obj;
+        self->_barBackgroundView = obj;
         *stop = YES;
         return;
       }
