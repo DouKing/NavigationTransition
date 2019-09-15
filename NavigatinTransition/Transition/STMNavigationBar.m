@@ -9,6 +9,8 @@
 @interface STMNavigationBar ()
 
 @property (nonatomic, strong) UIView *barBackgroundView;
+@property (nonatomic, strong) UIView *barContentView;
+
 @property (nonatomic, strong) UIView *barTintBackgroundView;
 
 @end
@@ -45,6 +47,8 @@
   if (!self.barTintBackgroundView.superview) {
     [self.barBackgroundView.superview insertSubview:self.barTintBackgroundView
                                        aboveSubview:self.barBackgroundView];
+  } else if (self.barContentView) {
+    [self.barBackgroundView.superview bringSubviewToFront:self.barContentView];
   }
 }
 
@@ -59,6 +63,18 @@
     }];
   }
   return _barBackgroundView;
+}
+
+- (UIView *)barContentView {
+  if (!_barContentView) {
+    [self.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+      if ([obj isKindOfClass:NSClassFromString(@"_UINavigationBarContentView")]) {
+        self->_barContentView = obj;
+        *stop = YES;
+      }
+    }];
+  }
+  return _barContentView;
 }
 
 - (UIView *)barTintBackgroundView {

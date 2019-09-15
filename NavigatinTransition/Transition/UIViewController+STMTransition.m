@@ -108,20 +108,15 @@
 }
 
 - (BOOL)stm_prefersNavigationBarHidden {
-  return [objc_getAssociatedObject(self, _cmd) boolValue];
+  NSNumber *isHidden = objc_getAssociatedObject(self, _cmd);
+  if (!isHidden) {
+    return self.navigationController.navigationBarHidden;
+  }
+  return [isHidden boolValue];
 }
 
 - (void)setStm_prefersNavigationBarHidden:(BOOL)hidden {
   objc_setAssociatedObject(self, @selector(stm_prefersNavigationBarHidden), @(hidden), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (void)setNavigationTransitionStyleAdapter:(NSInteger)navigationTransitionStyleAdapter {
-  objc_setAssociatedObject(self, @selector(navigationTransitionStyleAdapter), @(navigationTransitionStyleAdapter), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-  self.navigationTransitionStyle = navigationTransitionStyleAdapter;
-}
-
-- (NSInteger)navigationTransitionStyleAdapter {
-  return [objc_getAssociatedObject(self, _cmd) integerValue];
 }
 
 - (void)setStm_barTintColor:(UIColor *)stm_barTintColor {

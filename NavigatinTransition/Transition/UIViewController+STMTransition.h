@@ -24,9 +24,6 @@ IB_DESIGNABLE
 
 @property (nonatomic, assign) IBInspectable BOOL stm_prefersNavigationBarHidden;
 
-//// adapter for `navigationTransitionStyle`, when you want to use `navigationTransitionStyle` in IB, use this.
-//@property (nonatomic, assign) IBInspectable NSInteger navigationTransitionStyleAdapter;
-
 @property (nonatomic, strong) IBInspectable UIColor *stm_barTintColor;
 
 @end
