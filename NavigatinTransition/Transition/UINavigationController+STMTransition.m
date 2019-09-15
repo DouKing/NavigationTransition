@@ -8,8 +8,6 @@
 
 #import "UINavigationController+STMTransition.h"
 #import "_STMNavigationTransitionDefines.h"
-#import "STMNavigationResignLeftTransitionAnimator.h"
-#import "STMNavigationResignBottomTransitionAnimator.h"
 
 @interface STMPopGestureRecognizerDelegate : NSObject <UIGestureRecognizerDelegate>
 
@@ -22,9 +20,6 @@
 @property (nonatomic, weak) id<UINavigationControllerDelegate> delegate;
 @property (nonatomic, weak) UINavigationController *navigationController;
 
-@property (nonatomic, strong) STMNavigationBaseTransitionAnimator *baseTransitionAnimator;
-@property (nonatomic, strong) STMNavigationResignLeftTransitionAnimator *resignLeftTransitionAnimator;
-@property (nonatomic, strong) STMNavigationResignBottomTransitionAnimator *resignBottomTransitionAnimator;
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition *interactionController;
 @property (nonatomic, assign) BOOL interacting;
 
@@ -134,14 +129,6 @@
   return popGestureDelegate;
 }
 
-- (void)setCurrentTransitionStyle:(STMNavigationTransitionStyle)currentTransitionStyle {
-  objc_setAssociatedObject(self, @selector(currentTransitionStyle), @(currentTransitionStyle), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (STMNavigationTransitionStyle)currentTransitionStyle {
-  return [objc_getAssociatedObject(self, _cmd) integerValue];
-}
-
 @end
 
 #pragma mark -
@@ -164,7 +151,8 @@
 
 - (BOOL)respondsToSelector:(SEL)aSelector {
   if (  sel_isEqual(aSelector, @selector(navigationController:animationControllerForOperation:fromViewController:toViewController:))
-     || sel_isEqual(aSelector, @selector(navigationController:interactionControllerForAnimationController:))) {
+     || sel_isEqual(aSelector, @selector(navigationController:interactionControllerForAnimationController:))
+     || sel_isEqual(aSelector, @selector(navigationController:didShowViewController:animated:))) {
     return YES;
   }
   return [self.delegate respondsToSelector:aSelector];
@@ -202,27 +190,6 @@
   }
 }
 
-- (STMNavigationBaseTransitionAnimator *)_animatorForTransitionStyle:(STMNavigationTransitionStyle)transitionStyle {
-  switch (transitionStyle) {
-    case STMNavigationTransitionStyleSystem: {
-      return nil;
-      break;
-    }
-    case STMNavigationTransitionStyleResignLeft: {
-      return self.resignLeftTransitionAnimator;
-      break;
-    }
-    case STMNavigationTransitionStyleResignBottom: {
-      return self.resignBottomTransitionAnimator;
-      break;
-    }
-    case STMNavigationTransitionStyleNone: {
-      return self.baseTransitionAnimator;
-      break;
-    }
-  }
-}
-
 - (void)_useSystemAnimatorOrNot:(BOOL)use {
   if (use) {
     self.navigationController.screenPan.enabled = NO;
@@ -252,20 +219,17 @@
                                                              animationControllerForOperation:operation
                                                                           fromViewController:fromVC
                                                                             toViewController:toVC];
-    [self _useSystemAnimatorOrNot:animator == nil];
     return animator;
   }
 
-  UIViewController *transitionVC = (UINavigationControllerOperationPush == operation) ? toVC : fromVC;
-  STMNavigationTransitionStyle transitionStyle = transitionVC.navigationTransitionStyle;
-  if (STMNavigationTransitionStyleNone == transitionStyle) {
-    transitionStyle = self.navigationController.navigationTransitionStyle;
-  }
-  self.navigationController.currentTransitionStyle = transitionStyle;
-  STMNavigationBaseTransitionAnimator *animator = [self _animatorForTransitionStyle:transitionStyle];
+  UIViewController *transitionVC = (UINavigationControllerOperationPush == operation) ? toVC : fromVC;  
+  STMNavigationBaseTransitionAnimator *animator = transitionVC.stm_animator;
   animator.operation = operation;
-  [self _useSystemAnimatorOrNot:animator == nil];
   return animator;
+}
+
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+  [self _useSystemAnimatorOrNot:viewController.stm_animator == nil];
 }
 
 #pragma mark - setter & getter
@@ -275,27 +239,6 @@
     _interactionController = [[UIPercentDrivenInteractiveTransition alloc] init];
   }
   return _interactionController;
-}
-
-- (STMNavigationResignLeftTransitionAnimator *)resignLeftTransitionAnimator {
-  if (!_resignLeftTransitionAnimator) {
-    _resignLeftTransitionAnimator = [[STMNavigationResignLeftTransitionAnimator alloc] init];
-  }
-  return _resignLeftTransitionAnimator;
-}
-
-- (STMNavigationResignBottomTransitionAnimator *)resignBottomTransitionAnimator {
-  if (!_resignBottomTransitionAnimator) {
-    _resignBottomTransitionAnimator = [[STMNavigationResignBottomTransitionAnimator alloc] init];
-  }
-  return _resignBottomTransitionAnimator;
-}
-
-- (STMNavigationBaseTransitionAnimator *)baseTransitionAnimator {
-  if (!_baseTransitionAnimator) {
-    _baseTransitionAnimator = [[STMNavigationBaseTransitionAnimator alloc] init];
-  }
-  return _baseTransitionAnimator;
 }
 
 @end

@@ -15,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UINavigationController (STMTransition)
 
 @property (nonatomic, strong, readonly) UIPanGestureRecognizer *stm_fullscreenInteractivePopGestureRecognizer;
-@property (nonatomic, assign, readonly) STMNavigationTransitionStyle currentTransitionStyle;
 
 @end
 

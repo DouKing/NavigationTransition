@@ -60,7 +60,6 @@
 		B881198F1D53171000238644 /* STMNavigationResignLeftTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMNavigationResignLeftTransitionAnimator.m; sourceTree = "<group>"; };
 		B88119901D53171000238644 /* STMTransitionSnapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMTransitionSnapshot.h; sourceTree = "<group>"; };
 		B88119911D53171000238644 /* STMTransitionSnapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMTransitionSnapshot.m; sourceTree = "<group>"; };
-		B88119921D53171000238644 /* STMNavigationTransitionStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMNavigationTransitionStyle.h; sourceTree = "<group>"; };
 		B88119951D53171000238644 /* UIViewController+STMTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+STMTransition.h"; sourceTree = "<group>"; };
 		B88119961D53171000238644 /* UIViewController+STMTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+STMTransition.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -143,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				B881198B1D53171000238644 /* AnimatedTransition */,
-				B88119921D53171000238644 /* STMNavigationTransitionStyle.h */,
 				B88119951D53171000238644 /* UIViewController+STMTransition.h */,
 				B88119961D53171000238644 /* UIViewController+STMTransition.m */,
 				000614BC1E127F9A008C031A /* UINavigationController+STMTransition.h */,

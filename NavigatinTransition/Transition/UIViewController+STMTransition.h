@@ -7,16 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "STMNavigationTransitionStyle.h"
+#import "STMNavigationBaseTransitionAnimator.h"
 
 IB_DESIGNABLE
 @interface UIViewController (STMTransition)
 
-#if TARGET_INTERFACE_BUILDER
-@property (nonatomic, assign) IBInspectable NSInteger navigationTransitionStyle;
-#else
-@property (nonatomic, assign) STMNavigationTransitionStyle navigationTransitionStyle;
-#endif
+/// if nil, use system animation
+@property (nonatomic, strong) __kindof STMNavigationBaseTransitionAnimator *stm_animator;
 
 @property (nonatomic, assign) IBInspectable BOOL stm_interactivePopDisabled;
 

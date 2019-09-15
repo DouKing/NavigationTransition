@@ -62,28 +62,19 @@
 }
 
 - (BOOL)_autoChangeNavigationBar {
-  return (STMNavigationTransitionStyleSystem == self.navigationController.currentTransitionStyle);
+  return !self.stm_animator;//使用系统动画
 }
 
-- (STMNavigationTransitionStyle)navigationTransitionStyle {
-  NSNumber *style = objc_getAssociatedObject(self, @selector(navigationTransitionStyle));
-  if (!style) {
-    if ([self isKindOfClass:[UINavigationController class]]) {
-      style = @(STMNavigationTransitionStyleSystem);
-    } else {
-      style = @(STMNavigationTransitionStyleNone);
-    }
-    self.navigationTransitionStyle = [style integerValue];
+- (STMNavigationBaseTransitionAnimator *)stm_animator {
+  STMNavigationBaseTransitionAnimator *animator = objc_getAssociatedObject(self, _cmd);
+  if (!animator) {
+    return self.navigationController.stm_animator;
   }
-  return [style integerValue];
+  return animator;
 }
 
-- (void)setNavigationTransitionStyle:(STMNavigationTransitionStyle)navigationTransitionStyle {
-  if (   [self isKindOfClass:[UINavigationController class]]
-      && (STMNavigationTransitionStyleNone == navigationTransitionStyle)) {
-    navigationTransitionStyle = STMNavigationTransitionStyleSystem;
-  }
-  objc_setAssociatedObject(self, @selector(navigationTransitionStyle), @(navigationTransitionStyle), OBJC_ASSOCIATION_RETAIN);
+- (void)setStm_animator:(__kindof STMNavigationBaseTransitionAnimator *)stm_animator {
+  objc_setAssociatedObject(self, @selector(stm_animator), stm_animator, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (BOOL)stm_interactivePopDisabled {
@@ -108,11 +99,7 @@
 }
 
 - (BOOL)stm_prefersNavigationBarHidden {
-  NSNumber *isHidden = objc_getAssociatedObject(self, _cmd);
-  if (!isHidden) {
-    return self.navigationController.navigationBarHidden;
-  }
-  return [isHidden boolValue];
+  return [objc_getAssociatedObject(self, _cmd) boolValue];
 }
 
 - (void)setStm_prefersNavigationBarHidden:(BOOL)hidden {

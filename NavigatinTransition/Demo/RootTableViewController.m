@@ -13,7 +13,7 @@
 #import "CustomTransition.h"
 #import "UINavigationItem+STMTransition.h"
 
-@interface RootTableViewController ()<UINavigationControllerDelegate>
+@interface RootTableViewController ()
 
 @end
 
@@ -35,17 +35,10 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+  UIViewController *vc = segue.destinationViewController;
   if ([segue.identifier isEqualToString:@"Image"]) {
-    self.navigationController.delegate = self;
-  } else {
-    self.navigationController.delegate = nil;
+    vc.stm_animator = [[CustomTransition alloc] init];
   }
-}
-
-- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
-  CustomTransition *transition = [[CustomTransition alloc] init];
-  transition.operation = operation;
-  return transition;
 }
 
 #pragma mark - Private methods
@@ -54,6 +47,7 @@
   DemoViewController *vc = [[DemoViewController alloc] init];
   UINavigationController *nav = [[UINavigationController alloc] initWithNavigationBarClass:STMNavigationBar.class toolbarClass:nil];
   nav.viewControllers = @[vc];
+  nav.modalPresentationStyle = UIModalPresentationFullScreen;
   // 设置整个导航栈的转场动画
   nav.navigationTransitionStyle = STMNavigationTransitionStyleSystem;
   [self presentViewController:nav animated:YES completion:nil];
@@ -67,3 +61,51 @@
 }
 
 @end
+
+#import <objc/runtime.h>
+#import "STMNavigationResignLeftTransitionAnimator.h"
+#import "STMNavigationResignBottomTransitionAnimator.h"
+
+@implementation UIViewController (Demo)
+
+- (STMNavigationBaseTransitionAnimator *)_animatorForTransitionStyle:(STMNavigationTransitionStyle)transitionStyle {
+  switch (transitionStyle) {
+    case STMNavigationTransitionStyleSystem: {
+      return nil;
+      break;
+    }
+    case STMNavigationTransitionStyleResignLeft: {
+      return self.resignLeftTransitionAnimator;
+      break;
+    }
+    case STMNavigationTransitionStyleResignBottom: {
+      return self.resignBottomTransitionAnimator;
+      break;
+    }
+  }
+}
+
+- (STMNavigationResignLeftTransitionAnimator *)resignLeftTransitionAnimator {
+  return [[STMNavigationResignLeftTransitionAnimator alloc] init];
+}
+
+- (STMNavigationResignBottomTransitionAnimator *)resignBottomTransitionAnimator {
+  return [[STMNavigationResignBottomTransitionAnimator alloc] init];
+}
+
+- (STMNavigationBaseTransitionAnimator *)baseTransitionAnimator {
+  return [[STMNavigationBaseTransitionAnimator alloc] init];
+}
+
+- (STMNavigationTransitionStyle)navigationTransitionStyle {
+  NSNumber *style = objc_getAssociatedObject(self, @selector(navigationTransitionStyle));
+  return [style integerValue];
+}
+
+- (void)setNavigationTransitionStyle:(STMNavigationTransitionStyle)navigationTransitionStyle {
+  objc_setAssociatedObject(self, @selector(navigationTransitionStyle), @(navigationTransitionStyle), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+  self.stm_animator = [self _animatorForTransitionStyle:navigationTransitionStyle];
+}
+
+@end
+

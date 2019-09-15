@@ -6,6 +6,7 @@
 
 #import "DemoViewController.h"
 #import "UIViewController+STMTransition.h"
+#import "STMNavigationResignLeftTransitionAnimator.h"
 
 @interface DemoViewController ()
 
@@ -32,7 +33,7 @@
   DemoViewController *vc = [[DemoViewController alloc] init];
   if (self.navigationController.viewControllers.count == 3) {
     // 针对单个 view controller 设置转场动画
-    vc.navigationTransitionStyle = STMNavigationTransitionStyleResignLeft;
+    vc.stm_animator = [[STMNavigationResignLeftTransitionAnimator alloc] init];
   }
   [self.navigationController pushViewController:vc animated:YES];
 }
