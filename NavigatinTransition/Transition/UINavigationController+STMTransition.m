@@ -230,6 +230,9 @@
 
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
   [self _useSystemAnimatorOrNot:viewController.stm_animator == nil];
+  if ([self.delegate respondsToSelector:_cmd]) {
+    [self.delegate navigationController:navigationController didShowViewController:viewController animated:animated];
+  }
 }
 
 #pragma mark - setter & getter
