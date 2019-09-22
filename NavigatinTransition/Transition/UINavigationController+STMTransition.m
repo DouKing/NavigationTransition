@@ -92,6 +92,7 @@
   if (!gesture) {
     gesture = [[UIPanGestureRecognizer alloc] initWithTarget:self.proxy action:@selector(_handleInteractionPopGesture:)];
     gesture.delegate = self.popGestureDelegate;
+    gesture.enabled = NO;
     self.screenPan = gesture;
   }
   return gesture;
