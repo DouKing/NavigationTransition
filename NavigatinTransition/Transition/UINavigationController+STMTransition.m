@@ -141,13 +141,20 @@
 }
 
 - (void)forwardInvocation:(NSInvocation *)invocation {
-  [invocation setTarget:self.delegate];
-  [invocation invoke];
+  if ([self.delegate respondsToSelector:invocation.selector]) {
+		[invocation setTarget:self.delegate];
+		[invocation invoke];
+  }
   return;
 }
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)sel {
-  return [(id)self.delegate methodSignatureForSelector:sel];
+  NSMethodSignature *methodSignature = [(id)self.delegate methodSignatureForSelector:sel];
+  if (!methodSignature) {
+		//self.delegate 已释放
+		methodSignature = [NSObject instanceMethodSignatureForSelector:sel];
+  }
+  return methodSignature;
 }
 
 - (BOOL)respondsToSelector:(SEL)aSelector {
@@ -157,6 +164,38 @@
     return YES;
   }
   return [self.delegate respondsToSelector:aSelector];
+}
+
+- (BOOL)isEqual:(id)object {
+	return [_delegate isEqual:object];
+}
+
+- (NSUInteger)hash {
+	return [_delegate hash];
+}
+
+- (Class)superclass {
+	return [_delegate superclass];
+}
+
+- (Class)class {
+	return [_delegate class];
+}
+
+- (BOOL)isKindOfClass:(Class)aClass {
+	return [_delegate isKindOfClass:aClass];
+}
+
+- (BOOL)isMemberOfClass:(Class)aClass {
+	return [_delegate isMemberOfClass:aClass];
+}
+
+- (BOOL)conformsToProtocol:(Protocol *)aProtocol {
+	return [_delegate conformsToProtocol:aProtocol];
+}
+
+- (BOOL)isProxy {
+  return YES;
 }
 
 - (void)_handleInteractionPopGesture:(UIScreenEdgePanGestureRecognizer *)gesture {
